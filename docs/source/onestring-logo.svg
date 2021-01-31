@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="29.482031mm"
+   height="29.482031mm"
+   viewBox="0 0 29.482031 29.482031"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="onestring-logo.svg"
+   inkscape:export-filename="/home/jason/MPM Nextcloud/Core Shared/Design/Logos/Onestring/onestring-logo.png"
+   inkscape:export-xdpi="344.61664"
+   inkscape:export-ydpi="344.61664">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Blur"
+       id="filter1271">
+      <feGaussianBlur
+         stdDeviation="0.11 0.11"
+         result="blur"
+         id="feGaussianBlur1269" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="32.301534"
+     inkscape:cy="59.278688"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="836"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-23.562126,-118.63455)">
+    <path
+       style="fill:none;stroke:#8600dc;stroke-width:0.865;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter1271)"
+       d="m 33.542967,123.65854 c -4.299112,2.23455 -10.445845,16.23446 -0.22816,20.99302 14.025625,6.53199 20.688179,-20.76931 9.247322,-21.92103 -5.423575,-0.54597 -4.513236,2.77364 -4.513236,2.77364 1.086202,2.87079 4.548518,2.8966 6.401297,1.50461 3.705563,-2.78398 2.696494,-5.91739 2.696494,-5.91739"
+       id="path12"
+       sodipodi:nodetypes="cssssc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.90536px;line-height:1.25;font-family:sans-serif;fill:#8600dc;fill-opacity:1;stroke:none;stroke-width:0.122634"
+       x="28.775154"
+       y="135.64154"
+       id="text1275"><tspan
+         sodipodi:role="line"
+         id="tspan1273"
+         x="28.775154"
+         y="135.64154"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Abel;-inkscape-font-specification:Abel;fill:#8600dc;fill-opacity:1;stroke-width:0.122634">Onestring</tspan></text>
+  </g>
+</svg>

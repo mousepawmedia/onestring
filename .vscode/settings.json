@@ -1,0 +1,17 @@
+{
+    "restructuredtext.confPath": "",
+    "files.associations": {
+        "memory_resource": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "*.tcc": "cpp",
+        "system_error": "cpp",
+        "unordered_map": "cpp",
+        "limits": "cpp",
+        "memory": "cpp",
+        "type_traits": "cpp"
+    }
+}
