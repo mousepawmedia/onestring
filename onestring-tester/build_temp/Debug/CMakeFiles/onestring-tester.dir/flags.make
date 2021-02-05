@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -Wall -Wextra -Werror -Wpedantic -std=c++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/jason/Code/Repositories/onestring/onestring-tester/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../onestring-source/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../../pawlib/pawlib/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../../libdeps/libs/include 
+CXX_INCLUDES = -I/home/jason/Code/Repositories/onestring/onestring-tester/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../onestring-source/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../../libdeps/libs/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../../arctic-tern/arctic-tern/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../../iosqueak/iosqueak/include -I/home/jason/Code/Repositories/onestring/onestring-tester/../../goldilocks/goldilocks/include 
 

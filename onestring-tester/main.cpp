@@ -44,10 +44,9 @@
 #include <iostream>
 #include <string>
 
-#include "onestring/onestring.hpp"
+#include "goldilocks/shell.hpp"
 
-// TODO: Switch to Goldilocks 2.0 and IOSqueak (pending their release)
-#include "pawlib/goldilocks_shell.hpp"
+#include "onestring/onestring.hpp"
 
 #include "onestring/tests/onechar_tests.hpp"
 #include "onestring/tests/onestring_tests.hpp"
@@ -71,7 +70,7 @@ int main(int argc, char* argv[])
 	test_code();
 
 	// Set up signal handling.
-	ioc.configure_echo(IOEchoMode::cout);
+	channel.configure_echo(IOEchoMode::cout);
 
 	GoldilocksShell* shell = new GoldilocksShell(">> ");
 	shell->register_suite<TestSuite_Onechar>("O-sB1");
@@ -84,8 +83,8 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-	    ioc << IOFormatTextAttr::bold << IOFormatTextFG::blue
-	        << "===== Onestring Tester =====\n" << IOCtrl::endl;
+	    channel << IOFormatTextAttr::bold << IOFormatTextFG::blue
+	        << "===== Onestring Tester =====\n" << channeltrl::endl;
 
 		test_code();
 

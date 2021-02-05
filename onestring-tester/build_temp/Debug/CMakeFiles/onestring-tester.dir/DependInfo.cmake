@@ -12,8 +12,10 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../../include"
   "../../../onestring-source/include"
-  "../../../../pawlib/pawlib/include"
   "../../../../libdeps/libs/include"
+  "../../../../arctic-tern/arctic-tern/include"
+  "../../../../iosqueak/iosqueak/include"
+  "../../../../goldilocks/goldilocks/include"
   )
 
 # Targets to which this target links.

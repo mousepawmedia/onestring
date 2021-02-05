@@ -39,16 +39,16 @@
  * on how to contribute to our projects.
  */
 
-#ifndef PAWLIB_ONESTRING_TESTS_HPP
-#define PAWLIB_ONESTRING_TESTS_HPP
+#ifndef ONESTRING_TESTS_HPP
+#define ONESTRING_TESTS_HPP
 
 #include <string>
 
 #include "onestring/onestring.hpp"
 
 // TODO: Switch to Goldilocks 2.0 and IOSqueak (pending their release)
-#include "pawlib/goldilocks.hpp"
-#include "pawlib/iochannel.hpp"
+#include "goldilocks/goldilocks.hpp"
+#include "iosqueak/channel.hpp"
 
 class TestOnestring : public Test
 {
@@ -2873,7 +2873,7 @@ class TestSuite_Onestring : public TestSuite
 public:
 	explicit TestSuite_Onestring() {}
 
-	testdoc_t get_title() override { return "PawLIB: Onestring Tests"; }
+	testdoc_t get_title() override { return "Onestring Tests"; }
 
 	void load_tests() override
 	{
@@ -3299,4 +3299,4 @@ public:
 	}
 };
 
-#endif  // PAWLIB_ONESTRING_TESTS_HPP
+#endif  // ONESTRING_TESTS_HPP

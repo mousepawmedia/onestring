@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/onestring-tester.dir/main.cpp.o  -o ../../bin/Debug/onestring-tester  ../../../../pawlib/pawlib/lib/libpawlib.a 
+/usr/bin/c++  -g  -rdynamic CMakeFiles/onestring-tester.dir/main.cpp.o  -o ../../bin/Debug/onestring-tester  ../../../../goldilocks/goldilocks/lib/libgoldilocks.a ../../../../iosqueak/iosqueak/lib/libiosqueak.a 

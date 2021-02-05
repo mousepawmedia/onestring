@@ -79,7 +79,8 @@ onestring__tester_EXTERNAL_OBJECTS =
 
 ../../bin/Debug/onestring-tester: CMakeFiles/onestring-tester.dir/main.cpp.o
 ../../bin/Debug/onestring-tester: CMakeFiles/onestring-tester.dir/build.make
-../../bin/Debug/onestring-tester: ../../../../pawlib/pawlib/lib/libpawlib.a
+../../bin/Debug/onestring-tester: ../../../../goldilocks/goldilocks/lib/libgoldilocks.a
+../../bin/Debug/onestring-tester: ../../../../iosqueak/iosqueak/lib/libiosqueak.a
 ../../bin/Debug/onestring-tester: CMakeFiles/onestring-tester.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jason/Code/Repositories/onestring/onestring-tester/build_temp/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/Debug/onestring-tester"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/onestring-tester.dir/link.txt --verbose=$(VERBOSE)
