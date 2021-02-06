@@ -9,8 +9,8 @@
 **/libs
 **/build
 **/build_temp
-pawlib/
-!pawlib-source/include/pawlib
+onestring/
+!onestring-source/include/onestring
 docs/build
 tester
 tester_debug
