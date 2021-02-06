@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
 	else
 	{
 	    channel << IOFormatTextAttr::bold << IOFormatTextFG::blue
-	        << "===== Onestring Tester =====\n" << channeltrl::endl;
+	        << "===== Onestring Tester =====\n" << IOCtrl::endl;
 
 		test_code();
 

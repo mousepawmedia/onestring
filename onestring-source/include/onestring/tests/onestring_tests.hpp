@@ -46,8 +46,8 @@
 
 #include "onestring/onestring.hpp"
 
-// TODO: Switch to Goldilocks 2.0 and IOSqueak (pending their release)
 #include "goldilocks/goldilocks.hpp"
+#include "goldilocks/assertions.hpp"
 #include "iosqueak/channel.hpp"
 
 class TestOnestring : public Test

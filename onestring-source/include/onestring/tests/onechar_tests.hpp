@@ -45,6 +45,7 @@
 #include "onestring/onestring.hpp"
 
 #include "goldilocks/goldilocks.hpp"
+#include "goldilocks/assertions.hpp"
 #include "iosqueak/channel.hpp"
 
 class TestOnechar : public Test
