@@ -13,5 +13,6 @@
         "limits": "cpp",
         "memory": "cpp",
         "type_traits": "cpp"
-    }
+    },
+    "restructuredtext.languageServer.disabled": true
 }
