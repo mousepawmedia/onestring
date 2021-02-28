@@ -1,5 +1,5 @@
 # CMake Build Script (MousePaw Media Build System)
-# Version: 3.1.2
+# Version: 3.2.0
 
 # LICENSE
 # Copyright (c) 2021 MousePaw Media.

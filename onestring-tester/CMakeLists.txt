@@ -1,5 +1,5 @@
 # CMake Config (MousePaw Media Build System)
-# Version: 3.1.2
+# Version: 3.2.0
 
 # CHANGE: Name your project here
 project("Onestring Tester")
