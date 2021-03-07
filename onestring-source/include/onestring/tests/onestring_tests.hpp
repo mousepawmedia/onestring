@@ -2868,6 +2868,31 @@ public:
 	}
 };
 
+// O-tB241
+class TestOnestring_Cast : public Test
+{
+protected:
+	onestring start = "The quick brown 🦊 jumped over the lazy 🐶.";
+	std::string result = "The quick brown 🦊 jumped over the lazy 🐶.";
+
+public:
+	explicit TestOnestring_Cast() {}
+
+	testdoc_t get_title() override { return "Onestring: Cast to std::string"; }
+
+	testdoc_t get_docs() override
+	{
+		return "Test casting a Onestring to a std::string.";
+	}
+
+	bool run() override
+	{
+		std::string str = static_cast<std::string>(start);
+		PL_ASSERT_EQUAL(str, result);
+		return true;
+	}
+};
+
 class TestSuite_Onestring : public TestSuite
 {
 public:
@@ -3288,6 +3313,8 @@ public:
 		register_test("O-tB240g",
 					  new TestOnestring_OpPlus(
 						  TestOnestring::TestStringType::OSTR_UNICODE));
+
+		register_test("O-tB241", new TestOnestring_Cast());
 
 		// tB4035: find
 		// tB4036: find_first_not_of

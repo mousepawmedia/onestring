@@ -1,5 +1,5 @@
 /** Onechar
- * Version: 0.5
+ * Version: 1.0
  *
  * Onechar is an enhanced UTF-8 character class which is fully compatible with
  * the atomic char type, c-strings, and std::string.

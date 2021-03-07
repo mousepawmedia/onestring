@@ -1,11 +1,11 @@
 /** Onestring
- * Version: 0.5
+ * Version: 1.0
  *
  * Onestring is a multi-sized, Unicode-compatible (UTF-8) replacement for
- * std::string. Onestring contains all the functionality found in std::string,
- * and then some! It is fully compatible with c-strings, std::string, and the
- * atomic char data type. To handle Unicode, each Onestring is composed of
- * Onechars, an enhanced UTF-8 character class.
+ * std::basic_string. Onestring contains all the functionality found in
+ * std::basic_string, and then some! It is fully compatible with c-strings,
+ * std::basic_string, and the primitive char data type. To handle Unicode,
+ * each Onestring is composed of Onechars, an enhanced UTF-8 character class.
  *
  * Author(s): Jason C. McDonald, Scott Taylor, Jarek Thomas, Bowen Volwiler
  */
@@ -108,10 +108,10 @@ public:
 		assign(cstr);
 	}
 
-	/**Create a onestring from std::string
+	/**Create a onestring from std::basic_string
 	 * \param the string to be converted to onestring */
 	// cppcheck-suppress noExplicitConstructor
-	onestring(const std::string& str)
+	template<typename T> onestring(const std::basic_string<T>& str)
 	: _capacity(BASE_SIZE), _elements(0), internal(nullptr), _c_str(0)
 	{
 		allocate(this->_capacity);
@@ -225,14 +225,25 @@ private:
 		}
 	}
 
+	/** Invalidate the cached c_str and recreate it.
+	  * Normally called after any mutating operation.
+	  */
+	void invalidate_c_str() {
+		// If we have a c-string instance cached, deallocate it.
+		if (this->_c_str != nullptr) {
+			this->_c_str = nullptr;
+			delete[] this->_c_str;
+		}
+	}
+
 public:
-	/** Requests that the string capacity be expanded to accomidate
+	/** Requests that the string capacity be expanded to accommodate
 	 * the given number of additional characters.
 	 * `s.expand(n)` is equivalent to `s.reserve(s.length() + n)`
 	 * \param the number of additional elements to reserve space for */
 	void expand(size_t expansion) { reserve(this->_elements + expansion); }
 
-	/** Requests that the string capacity be expanded to accomidate
+	/** Requests that the string capacity be expanded to accommodate
 	 * the given number of characters.
 	 * \param the number of elements to reserve space for */
 	void reserve(size_t elements)
@@ -253,7 +264,6 @@ public:
 		}
 
 		// Expand until we have enough space.
-		// cppcheck-suppress knownConditionTrueFalse
 		while (this->_capacity < elements) {
 			this->_capacity *= RESIZE_FACTOR;
 		}
@@ -398,16 +408,17 @@ public:
 		return cstr_i;
 	}
 
-	/** Returns a c-string equivalent of a onestring
-	 * \return the c-string (remember to free[]) */
+	/** Returns a c-string equivalent of a onestring.
+	  * Pointer may become invalidated by calls to other member functions.
+	  * \return the c-string */
 	const char* c_str() const
 	{
-		// If we have a c-string instance cached, deallocate it.
+		// If we have a c-string instance cached, just return that.
 		if (this->_c_str != nullptr) {
-			delete[] this->_c_str;
+			return this->_c_str;
 		}
 
-		// Allocate a new c-string.
+		// Otherwise, allocate a new c-string.
 		size_t n = size();
 		this->_c_str = new char[n];
 
@@ -425,9 +436,18 @@ public:
 		return this->_c_str;
 	}
 
+	/** Returns a std::basic_string equivalent of a onestring
+	 * \return the std::basic_string
+	 */
+	template<typename T>
+	operator std::basic_string<T>() const {
+		auto r = std::basic_string<T>(this->c_str());
+		return r;
+	}
+
 	/** Returns a c-string equivalent of a onestring
 	 * Alias for onestring::c_str()
-	 * \return the c-string (remember to free[]) */
+	 * \return the c-string */
 	const char* data() const { return c_str(); }
 
 	/**Checks to see if a onestring contains any data
@@ -595,14 +615,15 @@ public:
 		return sizeDiff;
 	}
 
-	/** Compares the onestring against a std::string.
+	/** Compares the onestring against a std::basic_string.
 	 * \return an integer representing the result.
 	 * Returns a negative integer IF this onestring is shorter
 	 * OR the same length and lower in value
 	 * Returns zero if the values are the same
 	 * Returns a positive integer IF this onestring is longer
 	 * OR the same length and higher in value */
-	int compare(const std::string& str) const { return compare(str.c_str()); }
+	template<typename T>
+	int compare(const std::basic_string<T>& str) const { return compare(str.c_str()); }
 
 	/** Compares the onestring against a onestring.
 	 * \return an integer representing the result.
@@ -669,13 +690,14 @@ public:
 		return true;
 	}
 
-	/** Tests if the onestring value is equivalent to a std::string.
-	 * \param the std::string to compare against
+	/** Tests if the onestring value is equivalent to a std::basic_string.
+	 * \param the std::basic_string to compare against
 	 * \return true if equal, else false */
-	bool equals(const std::string& str) const { return equals(str.c_str()); }
+	template<typename T>
+	bool equals(const std::basic_string<T>& str) const { return equals(str.c_str()); }
 
-	/** Tests if the onestring value is equivalent to a std::string.
-	 * \param the std::string to compare against
+	/** Tests if the onestring value is equivalent to another onestring.
+	 * \param the onestring to compare against
 	 * \return true if equal, else false */
 	bool equals(const onestring& ostr) const
 	{
@@ -709,6 +731,7 @@ public:
 			// Insert a 1-byte ASCII char
 			internal[_elements++] = ch;
 		}
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -723,6 +746,7 @@ public:
 		for (size_t a = 0; a < repeat; ++a) {
 			internal[_elements++] = ochr;
 		}
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -742,17 +766,20 @@ public:
 				index += internal[_elements++].parseFromString(cstr, index);
 			}
 		}
+		this->invalidate_c_str();
 		return *this;
 	}
 
 	/** Appends characters to the end of the onestring.
-	 * \param the std::string to append from
+	 * \param the std::basic_string to append from
 	 * \param how many times to repeat the append, default 1
 	 * \return a reference to the onestring */
-	onestring& append(const std::string& str, size_t repeat = 1)
+	template<typename T>
+	onestring& append(const std::basic_string<T>& str, size_t repeat = 1)
 	{
 		// Parse the internal c string directly.
 		append(str.c_str(), repeat);
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -771,7 +798,7 @@ public:
 
 			_elements += ostr._elements;
 		}
-
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -783,6 +810,7 @@ public:
 		clear();
 		reserve(1);
 		this->internal[_elements++] = ch;
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -794,6 +822,7 @@ public:
 		clear();
 		reserve(1);
 		this->internal[_elements++] = ochr;
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -813,15 +842,18 @@ public:
 			// Parse and store the character.
 			index += internal[_elements++].parseFromString(cstr, index);
 		}
+		this->invalidate_c_str();
 		return *this;
 	}
 
 	/** Assigns characters to the onestring.
-	 * \param the std::string to copy from
+	 * \param the std::basic_string to copy from
 	 * \return a reference to the onestring */
-	onestring& assign(const std::string& str)
+	template<typename T>
+	onestring& assign(const std::basic_string<T>& str)
 	{
 		assign(str.c_str());
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -836,6 +868,7 @@ public:
 			this->internal[i] = ostr.internal[i];
 		}
 		_elements = ostr._elements;
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -848,6 +881,7 @@ public:
 			_capacity = 0;
 			reserve(BASE_SIZE);
 			_elements = 0;
+			this->invalidate_c_str();
 		}
 	}
 
@@ -876,6 +910,7 @@ public:
 		// Update the number of elements
 		_elements = _elements - len;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -923,6 +958,7 @@ public:
 		// Increase the element count
 		++_elements;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -949,6 +985,7 @@ public:
 		// Increase the element count
 		++_elements;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -980,15 +1017,17 @@ public:
 		// Increase the element count
 		_elements += elements_to_insert;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
 	/** Inserts characters in the onestring at the given position.
 	 * \param the index to insert at.
 	 * If this is greater than the string length, it throws out_of_range
-	 * \param the std::string to insert
+	 * \param the std::basic_string to insert
 	 * \return a reference to the onestring */
-	onestring& insert(size_t pos, std::string& str)
+	template<typename T>
+	onestring& insert(size_t pos, std::basic_string<T>& str)
 	{
 		return insert(pos, str.c_str());
 	}
@@ -1019,6 +1058,7 @@ public:
 		// Increase the element count
 		_elements += elements_to_insert;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1029,6 +1069,7 @@ public:
 			/* We don't actually need to delete anything. The space will be
 			 * reused or deallocated as needed by other functions. */
 			--_elements;
+			this->invalidate_c_str();
 		}
 	}
 
@@ -1045,8 +1086,9 @@ public:
 	void push_back(const char* cstr) { append(cstr); }
 
 	/** Appends characters to the end of the onestring.
-	 * \param the std::string to append from */
-	void push_back(const std::string& str) { append(str); }
+	 * \param the std::basic_string to append from */
+	template<typename T>
+	void push_back(const std::basic_string<T>& str) { append(str); }
 
 	/** Appends characters to the end of the onestring.
 	 * \param the onestring to append from */
@@ -1123,6 +1165,7 @@ public:
 		// Write the data, using pos as our destination index.
 		this->internal[pos] = ch;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1149,6 +1192,7 @@ public:
 		// Write the data, using pos as our destination index.
 		this->internal[pos] = ochr;
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1179,6 +1223,7 @@ public:
 			index += internal[pos++].parseFromString(cstr, index);
 		}
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1186,9 +1231,10 @@ public:
 	 * \param the first position to replace.
 	 * If this is greater than the string length, it throws out_of_range.
 	 * \param the number of characters to replace.
-	 * \param the std::string to replace from.
+	 * \param the std::basic_string to replace from.
 	 * \return a reference to the onestring */
-	onestring& replace(size_t pos, size_t len, const std::string& str)
+	template<typename T>
+	onestring& replace(size_t pos, size_t len, const std::basic_string<T>& str)
 	{
 		return replace(pos, len, str.c_str());
 	}
@@ -1217,6 +1263,7 @@ public:
 			this->internal[pos + i] = ostr.internal[i];
 		}
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1262,6 +1309,7 @@ public:
 			subpos += internal[pos++].parseFromString(cstr, subpos);
 		}
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1269,14 +1317,15 @@ public:
 	 * \param the first position to replace.
 	 * If this is greater than the string length, it throws out_of_range.
 	 * \param the number of characters to replace.
-	 * \param the std::string to replace from
-	 * \param the index of the first character in the std::string to replace
-	 * from If this is greater than the std::string length, it throws
+	 * \param the std::basic_string to replace from
+	 * \param the index of the first character in the std::basic_string to replace
+	 * from If this is greater than the std::basic_string length, it throws
 	 * out_of_range. \param the number of characters to copy over. \return a
 	 * reference to the onestring */
+	template<typename T>
 	onestring& replace(size_t pos,
 					   size_t len,
-					   const std::string& str,
+					   const std::basic_string<T>& str,
 					   size_t subpos,
 					   size_t sublen)
 	{
@@ -1322,6 +1371,7 @@ public:
 			this->internal[pos + i] = ostr.internal[subpos + i];
 		}
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
@@ -1342,16 +1392,21 @@ public:
 			--rhe;
 		}
 
+		this->invalidate_c_str();
 		return *this;
 	}
 
 	/** Exchanges the content of this onestring with that of the given
-	 * std::string. \param the std::string to swap with */
-	void swap(std::string& str)
+	 * std::basic_string.
+	 * \param the std::basic_string to swap with
+	 */
+	template<typename T>
+	void swap(std::basic_string<T>& str)
 	{
-		std::string temp = str;
-		str = this->c_str();
+		std::basic_string<T> temp = str;
+		str.assign(this->c_str());
 		this->assign(temp);
+		this->invalidate_c_str();
 	}
 
 	/** Exchanges the content of this onestring with that of the given
@@ -1361,19 +1416,22 @@ public:
 		onestring temp = ostr;
 		ostr.assign(*this);
 		this->assign(temp);
+		this->invalidate_c_str();
 	}
 
 	/** Exchanges the content of the given strings.
 	 * \param the first string to swap
 	 * \param the second string to swap
 	 */
-	static void swap(std::string& lhs, onestring& rhs) { rhs.swap(lhs); }
+	template<typename T>
+	static void swap(std::basic_string<T>& lhs, onestring& rhs) { rhs.swap(lhs); }
 
 	/** Exchanges the content of the given strings.
 	 * \param the first string to swap
 	 * \param the second string to swap
 	 */
-	static void swap(onestring& lhs, std::string& rhs) { lhs.swap(rhs); }
+	template<typename T>
+	static void swap(onestring& lhs, std::basic_string<T>& rhs) { lhs.swap(rhs); }
 
 	/** Exchanges the content of the given strings.
 	 * \param the first string to swap
@@ -1393,17 +1451,21 @@ public:
 		assign(ch);
 		return *this;
 	}
+
 	onestring& operator=(const onechar& ochr)
 	{
 		assign(ochr);
 		return *this;
 	}
+
 	onestring& operator=(const char* cstr)
 	{
 		assign(cstr);
 		return *this;
 	}
-	onestring& operator=(const std::string& str)
+
+	template<typename T>
+	onestring& operator=(const std::basic_string<T>& str)
 	{
 		assign(str);
 		return *this;
@@ -1417,7 +1479,8 @@ public:
 	void operator+=(const char ch) { append(ch); }
 	void operator+=(const onechar& ochr) { append(ochr); }
 	void operator+=(const char* cstr) { append(cstr); }
-	void operator+=(const std::string& str) { append(str); }
+	template<typename T>
+	void operator+=(const std::basic_string<T>& str) { append(str); }
 	void operator+=(const onestring& ostr) { append(ostr); }
 
 	/** Combines a onestring and a char.
@@ -1440,16 +1503,18 @@ public:
 		return new_ostr;
 	}
 
-	// Combine a onestring and a std::string.
-	friend onestring operator+(const onestring& lhs, const std::string& rhs)
+	// Combine a onestring and a std::basic_string.
+	template<typename T>
+	friend onestring operator+(const onestring& lhs, const std::basic_string<T>& rhs)
 	{
 		onestring new_ostr(lhs);
 		new_ostr.append(rhs);
 		return new_ostr;
 	}
 
-	// Combine a onestring and a std::string.
-	friend onestring operator+(const std::string& lhs, const onestring& rhs)
+	// Combine a onestring and a std::basic_string.
+	template<typename T>
+	friend onestring operator+(const std::basic_string<T>& lhs, const onestring& rhs)
 	{
 		onestring new_ostr(lhs);
 		new_ostr.append(rhs);
@@ -1483,7 +1548,8 @@ public:
 	bool operator==(const char ch) const { return equals(ch); }
 	bool operator==(const onechar& ochr) const { return equals(ochr); }
 	bool operator==(const char* cstr) const { return equals(cstr); }
-	bool operator==(const std::string& str) const { return equals(str); }
+	template<typename T>
+	bool operator==(const std::basic_string<T>& str) const { return equals(str); }
 	bool operator==(const onestring& ostr) const { return equals(ostr); }
 
 	friend bool operator==(const char ch, const onestring& ostr)
@@ -1498,7 +1564,8 @@ public:
 	{
 		return ostr.equals(cstr);
 	}
-	friend bool operator==(const std::string& str, const onestring& ostr)
+	template<typename T>
+	friend bool operator==(const std::basic_string<T>& str, const onestring& ostr)
 	{
 		return ostr.equals(str);
 	}
@@ -1506,7 +1573,8 @@ public:
 	bool operator!=(const char ch) const { return !equals(ch); }
 	bool operator!=(const onechar& ochr) const { return !equals(ochr); }
 	bool operator!=(const char* cstr) const { return !equals(cstr); }
-	bool operator!=(const std::string& str) const { return !equals(str); }
+	template<typename T>
+	bool operator!=(const std::basic_string<T>& str) const { return !equals(str); }
 	bool operator!=(const onestring& ostr) const { return !equals(ostr); }
 
 	friend bool operator!=(const char ch, const onestring& ostr)
@@ -1521,7 +1589,8 @@ public:
 	{
 		return !ostr.equals(cstr);
 	}
-	friend bool operator!=(const std::string& str, const onestring& ostr)
+	template<typename T>
+	friend bool operator!=(const std::basic_string<T>& str, const onestring& ostr)
 	{
 		return !ostr.equals(str);
 	}
@@ -1529,7 +1598,8 @@ public:
 	bool operator<(const char ch) const { return (compare(ch) < 0); }
 	bool operator<(const onechar& ochr) const { return (compare(ochr) < 0); }
 	bool operator<(const char* cstr) const { return (compare(cstr) < 0); }
-	bool operator<(const std::string& str) const { return (compare(str) < 0); }
+	template<typename T>
+	bool operator<(const std::basic_string<T>& str) const { return (compare(str) < 0); }
 	bool operator<(const onestring& ostr) const { return (compare(ostr) < 0); }
 
 	friend bool operator<(const char ch, const onestring& ostr)
@@ -1544,7 +1614,8 @@ public:
 	{
 		return (ostr.compare(cstr) > 0);
 	}
-	friend bool operator<(const std::string& str, const onestring& ostr)
+	template<typename T>
+	friend bool operator<(const std::basic_string<T>& str, const onestring& ostr)
 	{
 		return (ostr.compare(str) > 0);
 	}
@@ -1552,7 +1623,8 @@ public:
 	bool operator<=(const char ch) const { return (compare(ch) <= 0); }
 	bool operator<=(const onechar& ochr) const { return (compare(ochr) <= 0); }
 	bool operator<=(const char* cstr) const { return (compare(cstr) <= 0); }
-	bool operator<=(const std::string& str) const
+	template<typename T>
+	bool operator<=(const std::basic_string<T>& str) const
 	{
 		return (compare(str) <= 0);
 	}
@@ -1573,7 +1645,8 @@ public:
 	{
 		return (ostr.compare(cstr) >= 0);
 	}
-	friend bool operator<=(const std::string& str, const onestring& ostr)
+	template<typename T>
+	friend bool operator<=(const std::basic_string<T>& str, const onestring& ostr)
 	{
 		return (ostr.compare(str) >= 0);
 	}
@@ -1581,7 +1654,8 @@ public:
 	bool operator>(const char ch) const { return (compare(ch) > 0); }
 	bool operator>(const onechar& ochr) const { return (compare(ochr) > 0); }
 	bool operator>(const char* cstr) const { return (compare(cstr) > 0); }
-	bool operator>(const std::string& str) const { return (compare(str) > 0); }
+	template<typename T>
+	bool operator>(const std::basic_string<T>& str) const { return (compare(str) > 0); }
 	bool operator>(const onestring& ostr) const { return (compare(ostr) > 0); }
 
 	friend bool operator>(const char ch, const onestring& ostr)
@@ -1596,7 +1670,8 @@ public:
 	{
 		return (ostr.compare(cstr) < 0);
 	}
-	friend bool operator>(const std::string& str, const onestring& ostr)
+	template<typename T>
+	friend bool operator>(const std::basic_string<T>& str, const onestring& ostr)
 	{
 		return (ostr.compare(str) < 0);
 	}
@@ -1604,7 +1679,8 @@ public:
 	bool operator>=(const char ch) const { return (compare(ch) >= 0); }
 	bool operator>=(const onechar& ochr) const { return (compare(ochr) >= 0); }
 	bool operator>=(const char* cstr) const { return (compare(cstr) >= 0); }
-	bool operator>=(const std::string& str) const
+	template<typename T>
+	bool operator>=(const std::basic_string<T>& str) const
 	{
 		return (compare(str) >= 0);
 	}
@@ -1625,7 +1701,8 @@ public:
 	{
 		return (ostr.compare(cstr) <= 0);
 	}
-	friend bool operator>=(const std::string& str, const onestring& ostr)
+	template<typename T>
+	friend bool operator>=(const std::basic_string<T>& str, const onestring& ostr)
 	{
 		return (ostr.compare(str) <= 0);
 	}
