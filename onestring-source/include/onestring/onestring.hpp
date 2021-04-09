@@ -70,7 +70,7 @@ public:
 	inline static const float RESIZE_FACTOR = 1.5;
 
 private:
-	inline static const float RESIZE_LIMIT = npos / RESIZE_FACTOR;
+	inline static const float RESIZE_LIMIT = static_cast<float>(npos) / RESIZE_FACTOR;
 
 	/// The maximum number of elements that can be stored without resize
 	size_t _capacity;
