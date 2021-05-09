@@ -225,14 +225,15 @@ private:
 		}
 	}
 
-	/** Invalidate the cached c_str and recreate it.
+	/** Invalidate the cached c_str.
+	  * It will be recreated on next call to c_str()
 	  * Normally called after any mutating operation.
 	  */
 	void invalidate_c_str() {
 		// If we have a c-string instance cached, deallocate it.
 		if (this->_c_str != nullptr) {
-			this->_c_str = nullptr;
 			delete[] this->_c_str;
+			this->_c_str = nullptr;
 		}
 	}
 
@@ -1403,17 +1404,18 @@ public:
 	template<typename T>
 	void swap(std::basic_string<T>& str)
 	{
-		std::basic_string<T> temp = str;
+		auto temp = str;
 		str.assign(this->c_str());
 		this->assign(temp);
 		this->invalidate_c_str();
 	}
 
 	/** Exchanges the content of this onestring with that of the given
-	 * onestring. \param the onestring to swap with */
+	 * onestring.
+	 * \param the onestring to swap with */
 	void swap(onestring& ostr)
 	{
-		onestring temp = ostr;
+		onestring temp(ostr);
 		ostr.assign(*this);
 		this->assign(temp);
 		this->invalidate_c_str();
