@@ -495,6 +495,16 @@ public:
 				"Onestring::substr(): specified pos out of range");
 		}
 
+        if(pos < 0){
+			throw std::out_of_range(
+				"Onestring::substr(): pos is less than zero.");
+		}
+	
+		if(pos + len > _elements) {
+			throw std::out_of_range(
+				"Onestring::substr(): pos + length is greater than the num of elements.");
+		}
+	
 		onestring r;
 
 		// Calculate size of substr (number of elements)
