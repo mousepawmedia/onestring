@@ -56,7 +56,10 @@
  * moved to a dedicated Goldilocks Test and TestSuite.
  */
 void test_code()
-{}
+{
+	onestring name = "Orchids";
+	std::cout << name.c_str() << std::endl;
+}
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
 

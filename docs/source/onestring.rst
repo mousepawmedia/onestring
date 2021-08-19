@@ -3,7 +3,7 @@ Onestring
 
 What is Onestring?
 ===================================
-``Onestring`` is a multi-sized, Unicode-compatible replacement
+``onestring`` is a multi-sized, Unicode-compatible replacement
 for ``std::string``. Onestring contains all the
 basic functions found in ``std::string`` while optimizing
 the use of dynamic allocation wherever possible.
@@ -14,98 +14,100 @@ which are enhanced characters.
 Using a Onestring
 =====================================
 
-Creating a Onestring
+Creating a ``onestring``
 --------------------------------------
-You can create a Onestring with characters initialized with the ``=`` operator
+You can create a ``onestring`` with characters initialized with the ``=`` operator
 or leave it blank.
 
 ..  code-block:: c++
 
-    // Empty Onestring
-    Onestring blankString;
+    // Empty Onestring.
+    onestring blankString;
 
-    // Containing Onechars
-    Onestring fullString = "these are Unicode Characters";
+    // Containing Onechars.
+    onestring fullString = "these are Unicode Characters";
 
-You can also use the ``=`` operator to create a new Onestring with an existing
-Onestring.
+You can also use the ``=`` operator to create a new ``onestring`` with an existing
+``onestring``.
 
 ..  code-block:: c++
 
-  // Create the first Onestring
-  Onestring firstString = "copy me";
+    // Create the first Onestring.
+    onestring firstString = "copy me";
 
-  // Containing Onechars
-  Onestring secondString = firstString;
+    // Containing Onechars.
+    onestring secondString = firstString;
 
-  // secondString now contains "copy me".
+    std::cout << secondString << std::endl; // secondString now contains "copy me".
 
-
-Adding to a Onestring
+Adding to a ``onestring``
 ---------------------------------------
 
 ``+``, ``+=``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``+=`` and ``+`` operators add additional Unicode characters at the end of the
-existing ``Onestring``.
+The ``+=`` and ``+`` operators add additional Unicode characters at the end of the existing ``onestring``.
 
-Using ``+=``
+Using ``+=``:
 
 ..  code-block:: c++
 
-    //Declare a Onestring
-    Onestring more = "apple";
+    //Declare a Onestring.
+    onestring more = "apple";
 
-    // Use += to append an "s"
+    // Use += to append an "s".
     more += "s";
-    // `more` is now "apples"
 
-    // Use + to append "!"
-    more = more + "!"
-    // `more` is now "apples!"
+    std::cout << more << std::endl; // "apples".
+    
+    // Use + to append "!".
+    more = more + "!";
+
+    std::cout << more << std::endl; // "apples!".
 
 ``append()``, ``push_back()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Alternatively, you can use the functions ``append()`` and ``push_back()``
-to add additional Unicode characters at the end of the existing ``Onestring``.
+Alternatively, you can use the functions ``append()`` and ``push_back()`` to add additional Unicode characters at the end of the existing ``onestring``.
 
-Using ``append()``...
+Using ``append()``:
 
 ..  code-block:: c++
 
-    // Declare a Onestring
-    Onestring to_add = "apple";
+    // Declare a Onestring.
+    onestring fruit = "apple";
 
-    // Add "s" to `to_add`
-    to_add.append('s');
+    // Add "s" to `fruit`.
+    fruit.append('s');
 
-    // `to_add` is now "apples"
+    std::cout << fruit << std::endl; // Now `fruit` is "apples".
 
-    // add "!" to `to_add`
-    to_add.push_back('!');
+Using ``push_back()``:
 
-    // `to_add` is now "apples!"
+..  code-block:: c++
+
+    // Add "!" to `fruit`.
+    fruit.push_back('!');
+
+    std::cout << fruit << std::endl; // "apples!".
 
 ``insert()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``insert()`` allows you to insert a Unicode character into an existing
-``Onestring`` at a given position.
+``insert()`` allows you to insert a Unicode character into an existing ``onestring`` at a given position.
 
 ..  code-block:: c++
 
     // Declare a Onestring
-    Onestring alphabet = "abcdf";
+    onestring alphabet = "abcdf";
 
-    // Insert a value into `alphabet`
-    // The first value in the function refers to the index to be inserted
-    // The second value refers to the value to be inserted
+    // Insert a value into `alphabet`.
+    // The first value in the function refers to the index to be inserted.
+    // The second value refers to the value to be inserted.
     alphabet.insert(4, 'E');
 
-    // `alphabet` is now "abcdEf"
+    std::cout << alphabet << std::endl; // "abcdEf".
 
-Removing from a Onestring
+Removing from a ``onestring``
 ---------------------------------------
 
 ``clear()``
@@ -114,13 +116,27 @@ Removing from a Onestring
 
 ..  code-block:: c++
 
-    // Declare a Onestring
+    // Declare a Onestring.
     Onestring sleeve = "something";
 
-    // Clear the contents of `sleeve`
+    // Clear the contents of `sleeve`.
     sleeve.clear();
 
-    // `sleeve` is now empty
+    std::cout << sleeve << std::endl; // Now `sleeve` is empty.
+
+``erase()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``erase()`` erases part of a string, reducing its length.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring pokemon = "Pikachu";
+
+    //Reduce the length of `pokemon`.
+    pokemon.erase(2);
+
+    std::cout << pokemon << std::endl; // "Pi"
 
 
 ``pop_back()``
@@ -129,44 +145,84 @@ Removing from a Onestring
 
 ..  code-block:: c++
 
-    // Declare a Onestring
+    // Declare a Onestring.
     Onestring alphabet = "abcdef";
 
-    // Remove the last element from `alphabet`
+    // Remove the last element from `alphabet`.
     alphabet.pop_back();
 
-    // `alphabet` is now "abcde"
+    std::cout << alphabet << std::endl; // "abcde".
 
-Accessing Elements of A Onestring
+``replace()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``replace()`` replaces characters in the onestring.
+
+1. First parameter is the position where you want to replace.
+2. Second parameter is number of characters you want to replace.
+3. Third parameter is the characters you want add on your ``onestring``.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring hero = "Mario";
+
+    //Replacing "M" of `hero`.
+    hero.replace(0, 1, 'W');
+
+    std::cout << hero << std::endl; // "Wario"
+
+Accessing Elements of a ``onestring``
 ---------------------------------------
 ``[]``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ``[]`` operator acceses a Unicode character at a given location in a
-``Onestring``.
+``onestring``.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring test = "hello";
+
+    // Check what character is at position 1 in `test`.
+    std::cout << test[1] << std::endl; // 'e'.
+
+``at()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``at()`` can be used as an alternative to ``[]``.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring alphabet = "abcdef";
+
+    // Find the Onechar at position 3 in `alphabet`.
+    std::cout << alphabet.at(3) << std::endl; // 'd'.
+
+``back()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``back()`` returns the last Unicode character in a ``onestring``.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring day = "Sunday";
+
+    // Get last the Onechar in `day`.
+    std::cout << day.back() << std::endl; // 'y'.
+
+``front()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``front()`` returns the first Unicode character in a ``onestring``.
 
 ..  code-block:: c++
 
     // Declare a Onestring
-    Onestring test = "hello";
+    onestring day = "Monday";
 
-    // Check what character is at position 1 in `test`
-    test[1];
+    // Get first the Onechar in `day`
+    std::cout << day.back() << std::endl; // The function returns "M".
 
-    // The operator returns 'e'
-
-``at()``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The ``at()`` function can be used as an alternative to ``[]``.
-
-..  code-block:: c++
-
-     // Declare a Onestring
-     Onestring alphabet = "abcdef";
-
-     // Find the Onechar at position 3 in `alphabet`
-     alphabet.at(3);
-
-     // The function returns "d"
+..  note:: If the string is empty, the function will return ``undefined``, but memory safe.
 
 Comparing Onestrings
 ---------------------------------------
@@ -178,55 +234,62 @@ a boolean with the result.
 
 ..  code-block:: c++
 
-    // Declare two Onestring
-    Onestring dogs = "fun";
-    Onestring cats = "mean";
+    // Declare two Onestring.
+    onestring dogs = "fun";
+    onestring cats = "mean";
 
-    // Check for equivalence
-    if (dogs == cats)
-    {
+    // Check for equivalence.
+    if (dogs == cats) {
       return dogs;
-    }
-    else
-    {
+    } else {
       return cats;
     }
 
-    // This statement would return `cats`
+    // This statement would return `cats`.
 
-    // Reassign `cats`
+    // Reassign `cats`.
     cats = "fun";
 
-    // Check for equivalence
-    if (dogs == cats)
-    {
+    // Check for equivalence.
+    if (dogs == cats) {
       return dogs;
-    }
-    else
-    {
+    } else {
       return cats;
     }
 
     // The statement now returns `dogs`.
 
-``equals()``
+``compare()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``equals()`` can also be used to check for equality.
+``compare()`` compares the onestring against a c-string and an integer representing the result. Also, it returns one of the following integers:
+
+1. If the ``onestring`` is shorter, it will return a negative integer.
+2. If the values are the same, it will return ``0``.
+3. If the ``onestring`` is longer, it will return a positive integer.
 
 ..  code-block:: c++
 
-    // Declare a Onestring
-    Onestring checker = "red";
+    // Declare two Onestring.
+    onestring jack = "short";
+    onestring alain = "big";
 
-    // Compare with another Onestring
-    checker.equals("black");
+    //Compare two Onestring.
+    std::cout << jack.compare(alain) << std::endl; \\ Returns 2.
 
-    // The function returns false
+``equals()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``equals()`` checks for equality.
 
-    // Compare again
-    checker.equals("red");
+..  code-block:: c++
 
-    // The function returns true
+    // Declare a Onestring.
+    onestring checker = "red";
+
+    // Compare with another Onestring.
+    std::cout << checker.equals("black") << std::endl; // Returns false.
+
+    // Compare again.
+    std::cout << checker.equals("red") << std::endl; // Returns true.
 
 ``<, >, <=, >=``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -236,91 +299,142 @@ relative to the second. ``<`` is less than, ``>`` is greater than, and ``<=`` an
 
 ..  code-block:: c++
 
-    // Delcare three Onestrings
-    Onestring first = "one";
-    Onestring second = "two";
-    Onestring third = "three";
+    // Delcare three Onestrings.
+    onestring first = "one";
+    onestring second = "two";
+    onestring third = "three";
 
-    // Compare `first` to `second`
-    if (first < second)
-    {
+    // Compare `first` to `second`.
+    if (first < second) {
       return first;
-    }
-    else
-    {
+    } else {
       return second;
     }
 
-    // The statement returns `second`
+    // The statement returns "two".
 
-    if (first <= second)
-    {
+    if (first <= second) {
       return first;
-    }
-    else
-    {
+    } else {
       return second;
     }
 
-    // The statement now returns `first`
+    // The statement now returns "one".
 
-    if (third > second)
-    {
+    if (third > second) {
       return third;
-    }
-    else
-    {
+    } else {
       return second;
     }
 
-    // Finally, this statement returns `third`
+    // Finally, this statement returns "three".
 
 Other Functions
 --------------------------------------
 
-``empty()``
+``c_str()``, ``data()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``empty()`` checks to see if a Onestring is empty.
-The function returns true if it is empty, and false if it is not.
+Alternatively, you can use ``c_str()`` and ``data()`` return a c-string equivalent of a onestring.
 
 ..  code-block:: c++
 
-    // Declare a Onestring
-    Onestring toyBox;
+    // Declare a Onestring.
+    onestring car = "Ford";
 
-    // Check to see if `toybox` empty
-    toyBox.empty();
+    // Using `c_str()`.
+    std::cout << car.c_str() << std::endl;
 
-    // The function returns true
+    // Using `data()`.
+    std::cout << car.data() << std::endl;
 
-    // Assign values to `toyBox`
-    toyBox = "basketball"
+    // Both will return the same value which is "Ford".
 
-    // Check again to see if its empty
-    toyBox.empty();
 
-    // This time, the function returns false.
+``capacity()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``capacity()`` returns the current capacity of the onestring (it is used primarily internally for resizing purposes.
 
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring bird = "Orchids";
+
+    // Check the capacity of `bird`.
+    std::cout << bird.capacity() << std::endl; // Returns 9.
+
+``empty()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``empty()`` checks to see if a ``onestring`` is empty.
+If the ``onestring`` is empty, the function returns ``true``, otherwise it returns ``false``.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring toyBox;
+
+    // Check to see if `toybox` empty.
+    std::cout << toyBox.empty() << std::endl; // Returns true.
+
+    // Assign values to `toyBox`.
+    toyBox = "basketball";
+
+    // Check again to see if its empty.
+    std::cout << toyBox.empty() << std::endl; // Returns false.
 
 ``getType()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``getType()`` returns a boolean that represents either a ``Onestring``
+The ``getType()`` function returns a boolean that represents either a ``onestring``.
 or a ``QuickString``.
 
-
-``size()``
+``length()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``size()`` returns the number of characters that make up the ``Onestring``.
+``length()`` returns the current number of elements in a ``onestring``.
 
 ..  code-block:: c++
 
-    // Declare a Onestring
-    Onestring checker = "red";
+    // Declare a Onestring.
+    onestring planet = "Mars";
 
-    // check the size of `checker`
-    checker.size();
+    // Check the length of `planet`.
+    std::cout << planet.length() << std::endl; // Returns 4.
 
-    // The function will return 3
+``max_size()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``max_size()`` returns the greatest possible size in memory the ``onestring`` can take up without resizing.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring city = "Paris";
+
+    // Check the max size of `city`.
+    std::cout << city.first.max_size() << std::endl; // Returns 18446744073709551615.
+
+``reverse()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``reverse()`` reverses the contents of the ``onestring`` in place.
+
+.. code-block:: c++
+
+    //Declare Onestring.
+    onestring animal = "Lion";
+
+    //Reverse characters of `animal`
+    animal.reverse();
+
+    std::cout << animal << std::endl; // "noiL"
+
+``size()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``size()`` returns the number of bytes in the ``onestring``.
+
+..  code-block:: c++
+
+    // Declare a Onestring.
+    onestring checker = "red";
+
+    // check the size of `checker`.
+    std::cout << checker.size() << std::endl; // Returns 4.
 
 ``substr()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -329,31 +443,29 @@ or a ``QuickString``.
 
 ..  code-block:: c++
 
-    // Declare a Onestring
-    Onestring full = "monochromatic"
+    // Declare a Onestring.
+    onestring full = "monochromatic";
 
-    // Declare a new Onestring
-    // Using `full`
-    // and substr
-    Onestring partial = full.substr(0,3);
+    // Declare a new Onestring using `full` and substr.
+    onestring partial = full.substr(0,3);
 
-    // The new Onestring `partial` contains the word "mono".
-    // The numbers in the function call refer to
-    // the range to be copied into the new string.
+    std::cout << partial << std::endl; // "mono".
+
+    // The numbers in the function call refers to the range to be copied into the new string.
 
 ``swap()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``swap()`` switches the contents of the current ``Onestring`` with another.
-The two ``Onestrings`` must be of the same size.
+``swap()`` switches the contents of the current ``onestring`` with another.
+The two ``onestrings`` must be of the same size.
 
 ..  code-block:: c++
 
-    // Declare two Onestrings
-    Onestring first = "primary";
-    Onestring second = "secondary";
+    // Declare two Onestrings.
+    onestring first = "primary";
+    onestring second = "secondary";
 
-    // Swap `primary` and `secondary`
+    // Swap `primary` and `secondary`.
     first.swap(second);
 
-    // `first` now reads "secondary".
-    // `second` now reads "primary"
+    std::cout << first << std::endl; // "secondary".
+    std::cout << second << std::endl;// "primary".
