@@ -7,7 +7,7 @@ What is Onestring?
 for ``std::string``. Onestring contains all the
 basic functions found in ``std::string`` while optimizing
 the use of dynamic allocation wherever possible.
-To handle Unicode, each Onestring is made of Onechars,
+To handle Unicode, each onestring is made of Onechars,
 which are enhanced characters.
 
 
@@ -52,7 +52,7 @@ Using ``+=``:
 
 ..  code-block:: c++
 
-    //Declare a Onestring.
+    //Declare a Onestring
     onestring more = "apple";
 
     // Use += to append an "s".
@@ -112,12 +112,12 @@ Removing from a ``onestring``
 
 ``clear()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``clear()`` erases the contents of a Onestring.
+``clear()`` erases the contents of a onestring.
 
 ..  code-block:: c++
 
-    // Declare a Onestring.
-    Onestring sleeve = "something";
+    // Declare a Onestring
+    onestring sleeve = "something";
 
     // Clear the contents of `sleeve`.
     sleeve.clear();
@@ -141,12 +141,12 @@ Removing from a ``onestring``
 
 ``pop_back()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``pop_back()`` removes the last Unicode character in the Onestring
+``pop_back()`` removes the last Unicode character in the onestring
 
 ..  code-block:: c++
 
-    // Declare a Onestring.
-    Onestring alphabet = "abcdef";
+    // Declare a Onestring
+    onestring alphabet = "abcdef";
 
     // Remove the last element from `alphabet`.
     alphabet.pop_back();
@@ -180,8 +180,11 @@ The ``[]`` operator acceses a Unicode character at a given location in a
 
 ..  code-block:: c++
 
-    // Declare a Onestring.
+    // Declare a Onestring
     onestring test = "hello";
+
+    // Check what character is at position 1 in `test`
+    test[1];
 
     // Check what character is at position 1 in `test`.
     std::cout << test[1] << std::endl; // 'e'.
@@ -349,7 +352,6 @@ Alternatively, you can use ``c_str()`` and ``data()`` return a c-string equivale
 
     // Both will return the same value which is "Ford".
 
-
 ``capacity()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ``capacity()`` returns the current capacity of the onestring (it is used primarily internally for resizing purposes.
@@ -438,8 +440,10 @@ or a ``QuickString``.
 
 ``substr()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``substr()`` creates a new substring based on a range of characters in an exisiting
-``Onestring``
+``substr()`` creates a new substring from an existing ``onestring`` depending
+on the parameters passed. A single parameter indicates the position to start the
+resulting ``onestring`` at, while two parameters indicate the starting position
+and length of the result.
 
 ..  code-block:: c++
 
