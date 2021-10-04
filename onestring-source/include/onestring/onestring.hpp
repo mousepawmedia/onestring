@@ -488,39 +488,50 @@ public:
 	 * \param the position to begin the string to be created
 	 * \param the length of the string to be created, optional.
 	 * \return the created string */
-	onestring substr(size_t pos = 0, size_t len = npos) const
+	onestring substr(size_t index, size_t len) const
 	{
-		if (pos >= this->_elements) {
+		if (index >= this->_elements) {
 			throw std::out_of_range(
 				"Onestring::substr(): specified pos out of range");
 		}
 
-        if(pos < 0){
+        if(index < 0){
 			throw std::out_of_range(
 				"Onestring::substr(): pos is less than zero.");
 		}
 	
-		if(pos + len > _elements) {
+		onestring r;
+
+		if(index + len > this->_elements)
+		{
+			throw std::out_of_range(
+				"Onestring::substr(): overflow: \"index + len\" is greater than the current num of elements.");
+		}
+		// Calculate size of substr (number of elements)
+		size_t elements_to_copy =
+			(len > _elements - index) ? (_elements - index) : len;
+
+
+
+		if(elements_to_copy > _elements) {
 			throw std::out_of_range(
 				"Onestring::substr(): pos + length is greater than the num of elements.");
 		}
 	
-		onestring r;
-
-		// Calculate size of substr (number of elements)
-		size_t elements_to_copy =
-			(len > _elements - pos) ? (_elements - pos) : len;
 		// Reserve necessary space in the new onestring
 		r.reserve(elements_to_copy);
 		// Copy the characters for the substring
 		for (size_t i = 0; i < elements_to_copy; ++i) {
-			r.internal[i] = this->internal[pos + i];
+			r.internal[i] = this->internal[index + i];
 		}
 		// Record how many elements were copied.
 		r._elements = elements_to_copy;
 		return r;
 	}
 
+	onestring substr(size_t count) const{
+		return substr(count - 1, this->_elements);
+	}
 	/**Gets the byte size of the equivalent c-string.
 	 * WARNING: Given a onestring 's', s.size() < sizeof(s)
 	 * \return the number of bytes in the onestring */
