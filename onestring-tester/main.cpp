@@ -58,7 +58,9 @@
 void test_code()
 {
 	onestring name = "Orchids";
-	std::cout << name.c_str() << std::endl;
+	std::cout << name.to_lower() << std::endl;
+	std::cout << name.to_upper() << std::endl;
+	std::cout << name.reverse() << std::endl;
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////

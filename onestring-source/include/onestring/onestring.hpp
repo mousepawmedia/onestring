@@ -54,6 +54,7 @@
 #include <iomanip>
 #include <iostream>
 #include <istream>
+#include <locale>  // std::toupper, std::tolower, std::locale
 
 #include "onestring/onechar.hpp"
 
@@ -1440,6 +1441,46 @@ public:
 	 * \param the second string to swap
 	 */
 	static void swap(onestring& lhs, onestring& rhs) { lhs.swap(rhs); }
+
+	/** Convert the all characters of a onstring to lower case.
+	 * \param the onestring to convert to upper case.
+	 */
+	onestring& to_lower()
+	{
+		/** std::locale is used as predicate that perform string collation with
+		 * the standard containers and can be accessed directly to obtain or
+		 * modify the facets they hold.
+		 */
+		std::locale loc;
+
+		for (size_t i = 0; i < this->_elements; ++i) {
+			this->internal[i] = std::tolower(this->c_str()[i], loc);
+		}
+
+		this->invalidate_c_str();
+
+		return *this;
+	}
+
+	/** Convert the all characters of a onstring to upper case.
+	 * \param the onestring to convert to upper case.
+	 */
+	onestring& to_upper()
+	{
+		/** std::locale is used as predicate that perform string collation with
+		 * the standard containers and can be accessed directly to obtain or
+		 * modify the facets they hold.
+		 */
+		std::locale loc;
+
+		for (size_t i = 0; i < this->_elements; ++i) {
+			this->internal[i] = std::toupper(this->c_str()[i], loc);
+		}
+
+		this->invalidate_c_str();
+
+		return *this;
+	}
 
 	/*******************************************
 	 * Operators
