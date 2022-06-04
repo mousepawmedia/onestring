@@ -491,24 +491,40 @@ public:
 	 * \return the created string */
 	onestring substr(size_t pos = 0, size_t len = npos) const
 	{
-		if (pos >= this->_elements) {
-			throw std::out_of_range(
-				"Onestring::substr(): specified pos out of range");
+		onestring r;
+
+		// if pos is the only argument provided, reassigns value of len
+		if (len == npos) {
+			len = this->_elements - pos;
 		}
 
-		onestring r;
+		if (pos + len > this->_elements) {
+			throw std::out_of_range(
+				"Onestring::substr(): specified len is out of range");
+		}
+
+		// if pos == onestring.length(), it returns an empty string.
+		if (pos == this->_elements) {
+			r = " ";
+
+			return r;
+		}
 
 		// Calculate size of substr (number of elements)
 		size_t elements_to_copy =
-			(len > _elements - pos) ? (_elements - pos) : len;
+			(len > this->_elements - pos) ? (this->_elements - pos) : len;
+
 		// Reserve necessary space in the new onestring
 		r.reserve(elements_to_copy);
+
 		// Copy the characters for the substring
 		for (size_t i = 0; i < elements_to_copy; ++i) {
 			r.internal[i] = this->internal[pos + i];
 		}
+
 		// Record how many elements were copied.
 		r._elements = elements_to_copy;
+
 		return r;
 	}
 

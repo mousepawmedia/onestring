@@ -57,10 +57,48 @@
  */
 void test_code()
 {
-	onestring name = "Orchids";
-	std::cout << name.to_lower() << std::endl;
-	std::cout << name.to_upper() << std::endl;
-	std::cout << name.reverse() << std::endl;
+	onestring str = "abcd";
+	onestring aChar = "a";
+
+	std::cout << str.substr(0, str.length()) << std::endl;  // abcd
+	std::cout << str.substr(str.length()) << std::endl;     // empty str
+	std::cout << str.substr(0) << std::endl;                // abcd
+	std::cout << str.substr(3, 0) << std::endl;             // empy str
+	std::cout << aChar.substr(0, 1) << std::endl;           // a
+	std::cout << str.substr(0, 1) << std::endl;             // a
+	std::cout << str.substr(2, 2) << std::endl;             // cd
+	std::cout << str.substr(3, 1) << std::endl;             // d
+	std::cout << str.substr(4) << std::endl;                // empty str
+
+	try {
+		std::cout << str.substr(3, 2) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	try {
+		std::cout << str.substr(2, str.length()) << std::endl;  // excepction
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	try {
+		std::cout << str.substr(3, 4) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	try {
+		std::cout << aChar.substr(0, 2) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	try {
+		std::cout << str.substr(0, 5) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
