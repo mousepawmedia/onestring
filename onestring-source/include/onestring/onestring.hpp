@@ -1499,22 +1499,22 @@ public:
 	}
 
 	/*********************************************
-	 * Finders 
+	 * Finders
 	 ********************************************/
 
-	size_t find (const std::string& str, size_t pos = 0) {
-
+	int find(const std::string& str, int pos = 0)
+	{
 		if (pos >= this->_elements) {
 			throw std::out_of_range("Onestring::copy(): specified pos out of range");
 		}
 
 		// checks char one by one
-		for (size_t i = 0; i <= this->_elements - str.length(); i++) {
+		for (int i = 0; i <= this->_elements - str.length(); i++) {
 			
-			size_t matches = 0;
+			int matches = 0;
 
 			// checks if pattern matches
-			for (size_t j = pos; j < str.length(); j++) {
+			for (int j = pos; j < str.length(); j++) {
 				if (this->c_str()[i + j] != str[j]) {
 					break;
 				} else {
