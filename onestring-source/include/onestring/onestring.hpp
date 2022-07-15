@@ -1502,31 +1502,39 @@ public:
 	 * Finders
 	 ********************************************/
 
-	int find(const std::string& str, int pos = 0)
+	/** Searches for string for the first occurrence of the sequence specified by its arguments.
+	 * \param str string to search for.
+	 * \param pos position of the first character in the string to be considered in the search
+	 */
+	int find(const std::string& str, size_t pos = 0)
 	{
+		// if pos is greater than the onestring length throws error
 		if (pos >= this->_elements) {
 			throw std::out_of_range("Onestring::copy(): specified pos out of range");
 		}
 
-		// checks char one by one
-		for (int i = 0; i <= this->_elements - str.length(); i++) {
-			
-			int matches = 0;
+		size_t matches = 0;
 
-			// checks if pattern matches
-			for (int j = pos; j < str.length(); j++) {
-				if (this->c_str()[i + j] != str[j]) {
-					break;
-				} else {
+		// checks onestring chars one by one
+		for (size_t i = pos; i < this->_elements; ++i) {
+			
+			// checks if str[j] matches with c_str()[i + j], when no match it breaks the loop
+			for (size_t j = 0; j < str.length(); ++j) {
+				if (this->c_str()[i + j] == str[j]) {
 					matches++;
+				} else {
+					break;
 				}
 			}
-
+			
 			if (matches == str.length()) {
-				return i;
+				
+				// returns position of the first character of the first match
+				return static_cast<int>(i);
 			}
 		}
 
+		// returns -1 when no match
 		return -1;
 	}
 
