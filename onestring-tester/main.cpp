@@ -58,44 +58,25 @@
 void test_code()
 {
 	onestring str = "abcd";
-	onestring aChar = "a";
 
-	std::cout << str.substr(0, str.length()) << std::endl;  // abcd
-	std::cout << str.substr(str.length()) << std::endl;     // empty str
-	std::cout << str.substr(0) << std::endl;                // abcd
-	std::cout << str.substr(3, 0) << std::endl;             // empy str
-	std::cout << aChar.substr(0, 1) << std::endl;           // a
-	std::cout << str.substr(0, 1) << std::endl;             // a
-	std::cout << str.substr(2, 2) << std::endl;             // cd
-	std::cout << str.substr(3, 1) << std::endl;             // d
-	std::cout << str.substr(4) << std::endl;                // empty str
+	std::cout << str.find("z") << std::endl;      // -1
+	std::cout << str.find("da") << std::endl;     // -1
+	std::cout << str.find("bc") << std::endl;     // 1
+	std::cout << str.find("cd") << std::endl;     // 2
+	std::cout << str.find("bc", 3) << std::endl;  // -1
+	std::cout << str.find("bc", 1) << std::endl;  // 1
+	std::cout << str.find("d", 3) << std::endl;   // 3
+	std::cout << str.find("a") << std::endl;      // 1
+	std::cout << str.find("a", 1) << std::endl;   // -1
 
 	try {
-		std::cout << str.substr(3, 2) << std::endl;  // exception
+		std::cout << str.find("d", 4) << std::endl;  // exception
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
 	try {
-		std::cout << str.substr(2, str.length()) << std::endl;  // excepction
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	try {
-		std::cout << str.substr(3, 4) << std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	try {
-		std::cout << aChar.substr(0, 2) << std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	try {
-		std::cout << str.substr(0, 5) << std::endl;  // exception
+		std::cout << str.find("a", -1) << std::endl;
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
