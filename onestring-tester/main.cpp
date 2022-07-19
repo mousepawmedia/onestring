@@ -59,15 +59,15 @@ void test_code()
 {
 	onestring str = "abcd";
 
-	std::cout << str.find("z") << std::endl; // -1
-	std::cout << str.find("da") << std::endl; // -1
-	std::cout << str.find("bc") << std::endl; // 1
-	std::cout << str.find("cd") << std::endl; // 2
-	std::cout << str.find("bc", 3) << std::endl; // -1
-	std::cout << str.find("bc", 1) << std::endl; // 1
-	std::cout << str.find("d", 3) << std::endl; // 3
-	std::cout << str.find("a") << std::endl; // 1
-	std::cout << str.find("a", 1) << std::endl; // -1
+	std::cout << str.find("z") << std::endl;      // -1
+	std::cout << str.find("da") << std::endl;     // -1
+	std::cout << str.find("bc") << std::endl;     // 1
+	std::cout << str.find("cd") << std::endl;     // 2
+	std::cout << str.find("bc", 3) << std::endl;  // -1
+	std::cout << str.find("bc", 1) << std::endl;  // 1
+	std::cout << str.find("d", 3) << std::endl;   // 3
+	std::cout << str.find("a") << std::endl;      // 1
+	std::cout << str.find("a", 1) << std::endl;   // -1
 
 	try {
 		std::cout << str.find("d", 4) << std::endl;  // exception
