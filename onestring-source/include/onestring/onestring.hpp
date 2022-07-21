@@ -1517,7 +1517,7 @@ public:
 				"Onestring::find_first_not:of(): specified pos out of range");
 		}
 
-		size_t matches = 0;
+		size_t matches;
 
 		// checks onestring chars one by one
 		for (size_t i = pos; i < this->_elements; i++) {
