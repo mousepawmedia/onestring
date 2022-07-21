@@ -1502,42 +1502,45 @@ public:
 	 * Finders
 	 ********************************************/
 
-
-	/** Searches the string for the first occurrence that does not match any of 
+	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
 	 * \param str string to search for.
-	 * \param pos position of the first character in the string to be considered in the search
+	 * \param pos position of the first character in the string to be considered
+	 * in the search
 	 */
 
 	int find_first_not_of(const std::string& str, size_t pos = 0)
 	{
 		// if pos is greater than the onestring length throws error
 		if (pos >= this->_elements) {
-			throw std::out_of_range("Onestring::find_first_not:of(): specified pos out of range");
-    	}
-		
-		size_t matches = 0;		
-		
-		// checks onestring chars one by one		
-		for (size_t i = pos; i < this->_elements; i++) { 
+			throw std::out_of_range(
+				"Onestring::find_first_not:of(): specified pos out of range");
+		}
+
+		size_t matches = 0;
+
+		// checks onestring chars one by one
+		for (size_t i = pos; i < this->_elements; i++) {
 			// reset the matches
 			matches = 0;
-			/* check if the onestring char (c_str()[i]) matches with string argument's char 
-			*(str[j]). If match, switch to the next onestring char
-			*/
-			for (size_t j = 0; j < str.length(); j++) { 
+			/* check if the onestring char (c_str()[i]) matches with string
+			 *argument's char (str[j]). If match, switch to the next onestring
+			 *char
+			 */
+			for (size_t j = 0; j < str.length(); j++) {
 				if (this->c_str()[i] == str[j]) {
 					matches++;
 					break;
 				}
 			}
-			// if there is no match, there is not equal char, then return the position
-			if(matches == 0) {
+			// if there is no match, there is not equal char, then return the
+			// position
+			if (matches == 0) {
 				return i;
 			}
-		
 		}
-		// returns -1 when all onestring chars match with the arguments specified
+		// returns -1 when all onestring chars match with the arguments
+		// specified
 		return -1;
 	}
 
