@@ -1514,18 +1514,18 @@ public:
 		// if pos is greater than the onestring length throws error
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
-				"Onestring::find_first_not:of(): specified pos out of range");
+				"Onestring::find_first_not_of(): specified pos out of range");
 		}
 
 		// checks onestring chars one by one
-		for (size_t i = pos; i < this->_elements; i++) {
+		for (size_t i = pos; i < this->_elements; ++i) {
 			// reset the matches
 			size_t matches = 0;
 			/* check if the onestring char (c_str()[i]) matches with string
 			 *argument's char (str[j]). If match, switch to the next onestring
 			 *char
 			 */
-			for (size_t j = 0; j < str.length(); j++) {
+			for (size_t j = 0; j < str.length(); ++j) {
 				if (this->c_str()[i] == str[j]) {
 					matches++;
 					break;
