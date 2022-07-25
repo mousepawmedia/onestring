@@ -1517,28 +1517,23 @@ public:
 				"Onestring::find_first_not_of(): specified pos out of range");
 		}
 
-		// checks onestring chars one by one
+		// iterate over the chars of the giving string one by one
 		for (size_t i = pos; i < this->_elements; ++i) {
-			// reset the matches
+			// reset the matches after every comparision
 			size_t matches = 0;
-			/* check if the onestring char (c_str()[i]) matches with string
-			 *argument's char (str[j]). If match, switch to the next onestring
-			 *char
-			 */
+			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
 				if (this->c_str()[i] == str[j]) {
 					matches++;
 					break;
 				}
 			}
-			// if there is no match, there is not equal char, then return the
-			// position
+			// verify the none coincidence of chars, then return the position
 			if (matches == 0) {
 				return i;
 			}
 		}
-		// returns -1 when all onestring chars match with the arguments
-		// specified
+		// returns -1 in case all charactrs are found
 		return -1;
 	}
 
