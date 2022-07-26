@@ -57,6 +57,7 @@
  */
 void test_code()
 {
+
 	onestring str = "bold";
 
 	std::cout << str.find_first_not_of("body") << std::endl;     // 2
