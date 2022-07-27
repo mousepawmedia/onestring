@@ -1548,7 +1548,7 @@ public:
 
 	int find_first_not_of(const std::string& str, size_t pos = 0)
 	{
-		// if pos is greater than the onestring length throws error
+		// if the index start position is greater than the onestring length throws error
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
 				"Onestring::find_first_not_of(): specified pos out of range");
@@ -1570,7 +1570,7 @@ public:
 				return i;
 			}
 		}
-		// returns -1 in case all charactrs are found
+		// returns -1 in case all characters are found
 		return -1;
 	}
 
