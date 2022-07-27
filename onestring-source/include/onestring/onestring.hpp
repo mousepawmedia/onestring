@@ -1538,9 +1538,6 @@ public:
 		return -1;
 	}
 
-	/*******************************************
-	 * Finders
-	 ********************************************/
 
 	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
@@ -1563,7 +1560,7 @@ public:
 			size_t matches = 0;
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
-				if (this->c_str()[i] == str[j]) {
+				if (str.find(this->c_str()[i]) != npos) {
 					matches++;
 					break;
 				}
