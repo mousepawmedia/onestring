@@ -57,6 +57,7 @@
  */
 void test_code()
 {
+<<<<<<< HEAD
 	onestring ostr_test_one = "abcd";
 	onestring ostr_test_two = "(>o_o)> ==>";
 	onestring ostr_test_three = "dcba";
@@ -119,6 +120,18 @@ void test_code()
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
+=======
+	onestring str = "tyobaler";
+
+	std::cout << str.find_last_not_of("battery") << std::endl;      // 5
+	std::cout << str.find_last_not_of("roller") << std::endl;     // 4
+	std::cout << str.find_last_not_of("alley") << std::endl;     // 7
+	std::cout << str.find_last_not_of("baylroer") << std::endl;     // 0
+	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  // 2
+	std::cout << str.find_last_not_of("toy", 3) << std::endl;  // -1
+
+
+>>>>>>> test: add tests for find_last_not_of()
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
