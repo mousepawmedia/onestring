@@ -51,6 +51,7 @@
 #include <algorithm>
 #include <cctype>  // isspace()
 #include <cstring>
+#include <string>
 #include <iomanip>
 #include <iostream>
 #include <istream>
@@ -1522,6 +1523,7 @@ public:
 	 */
 	int find(onestring str, size_t pos = 0)
 	{
+
 		// if pos is greater than the onestring length throws error
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
@@ -1552,6 +1554,7 @@ public:
 		return -1;
 	}
 
+<<<<<<< HEAD
 	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
 	 * \param str string to search for.
@@ -1563,6 +1566,11 @@ public:
 	{
 		// if the index start position is greater than the onestring length
 		// throws error
+=======
+	int find_first_not_of(const std::string& str, size_t pos = 0)
+	{
+		// if pos is greater than the onestring length throws error
+>>>>>>> feat: add find_first_not of() & find_last_not_of()
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
 				"Onestring::find_first_not_of(): specified pos out of range");
@@ -1574,12 +1582,20 @@ public:
 			size_t matches = 0;
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
+<<<<<<< HEAD
 				if (str.find(this->c_str()[i]) != npos) {
+=======
+				if (this->c_str()[i] == str[j]) {
+>>>>>>> feat: add find_first_not of() & find_last_not_of()
 					matches++;
 					break;
 				}
 			}
+<<<<<<< HEAD
 			// verify the none equivalence of chars, then return the position
+=======
+			// verify the none coincidence of chars, then return the position
+>>>>>>> feat: add find_first_not of() & find_last_not_of()
 			if (matches == 0) {
 				return i;
 			}
@@ -1588,6 +1604,46 @@ public:
 		return -1;
 	}
 
+<<<<<<< HEAD
+=======
+	
+
+	/** Searches the string for the last occurrence of the sequence specified by its arguments. 
+	 * \param str string to search for. 
+	 * \param pos position of the last character in the string to be considered in the search
+	 */
+
+	int find_last_not_of(const std::string& str, size_t pos = npos )
+	{
+
+		int match = -1;
+
+		// iterate over the chars of the giving string one by one
+		for (size_t i = 0; i < this->_elements; ++i){
+			// check if the character can be found in the string we're searching
+			for (size_t j = 0; j < str.length(); ++j) {
+				if(str.find(this->c_str()[i]) != npos) {
+					break;
+				}else {
+					match = i;
+				}
+			}
+		}
+
+		if (match == -1) {
+			return -1;
+		}else {
+			return match;
+		}
+
+	}
+
+
+
+
+
+
+>>>>>>> feat: add find_first_not of() & find_last_not_of()
 	/*******************************************
 	 * Operators
 	 ********************************************/
