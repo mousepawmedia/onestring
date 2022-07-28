@@ -1619,7 +1619,7 @@ public:
 		int match = -1;
 
 		// iterate over the chars of the giving string one by one
-		for (size_t i = 0; i < this->_elements; ++i){
+		for (size_t i = 0; i < (pos == npos ? this->_elements : pos == str.length() ? pos : str.length() - 1); ++i){
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
 				if(str.find(this->c_str()[i]) != npos) {
