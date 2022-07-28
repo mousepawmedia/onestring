@@ -1565,7 +1565,7 @@ public:
 					break;
 				}
 			}
-			// verify the none coincidence of chars, then return the position
+			// verify the none equivalence of chars, then return the position
 			if (matches == 0) {
 				return i;
 			}
