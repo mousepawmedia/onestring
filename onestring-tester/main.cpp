@@ -57,26 +57,19 @@
  */
 void test_code()
 {
-	onestring str = "abcd";
+	onestring str = "bold";
 
-	std::cout << str.find("z") << std::endl;      // -1
-	std::cout << str.find("da") << std::endl;     // -1
-	std::cout << str.find("bc") << std::endl;     // 1
-	std::cout << str.find("cd") << std::endl;     // 2
-	std::cout << str.find("bc", 3) << std::endl;  // -1
-	std::cout << str.find("bc", 1) << std::endl;  // 1
-	std::cout << str.find("d", 3) << std::endl;   // 3
-	std::cout << str.find("a") << std::endl;      // 1
-	std::cout << str.find("a", 1) << std::endl;   // -1
+	std::cout << str.find_first_not_of("body") << std::endl;     // 2
+	std::cout << str.find_first_not_of("world") << std::endl;    // 0
+	std::cout << str.find_first_not_of("art") << std::endl;      // 0
+	std::cout << str.find_first_not_of("glad", 2) << std::endl;  // -1
+	std::cout << str.find_first_not_of("bow", 3) << std::endl;   // 3
+	std::cout << str.find_first_not_of("oolb", 1) << std::endl;  // 3
+	std::cout << str.find_first_not_of("ballet") << std::endl;   // 1
 
 	try {
-		std::cout << str.find("d", 4) << std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	try {
-		std::cout << str.find("a", -1) << std::endl;
+		std::cout << str.find_first_not_of("body", 6)
+				  << std::endl;  // exception
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}

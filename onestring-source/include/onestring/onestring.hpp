@@ -1538,6 +1538,42 @@ public:
 		return -1;
 	}
 
+	/** Searches the string for the first occurrence that does not match any of
+	 * the characters specified by its arguments.
+	 * \param str string to search for.
+	 * \param pos position of the first character in the string to be considered
+	 * in the search
+	 */
+
+	int find_first_not_of(const std::string& str, size_t pos = 0)
+	{
+		// if the index start position is greater than the onestring length
+		// throws error
+		if (pos >= this->_elements) {
+			throw std::out_of_range(
+				"Onestring::find_first_not_of(): specified pos out of range");
+		}
+
+		// iterate over the chars of the giving string one by one
+		for (size_t i = pos; i < this->_elements; ++i) {
+			// reset the matches after every comparision
+			size_t matches = 0;
+			// check if the character can be found in the string we're searching
+			for (size_t j = 0; j < str.length(); ++j) {
+				if (str.find(this->c_str()[i]) != npos) {
+					matches++;
+					break;
+				}
+			}
+			// verify the none equivalence of chars, then return the position
+			if (matches == 0) {
+				return i;
+			}
+		}
+		// returns -1 in case all characters are found
+		return -1;
+	}
+
 	/*******************************************
 	 * Operators
 	 ********************************************/
