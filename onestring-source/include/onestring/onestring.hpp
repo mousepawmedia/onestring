@@ -51,11 +51,11 @@
 #include <algorithm>
 #include <cctype>  // isspace()
 #include <cstring>
-#include <string>
 #include <iomanip>
 #include <iostream>
 #include <istream>
 #include <locale>  // std::toupper, std::tolower, std::locale
+#include <string>
 
 #include "onestring/onechar.hpp"
 
@@ -1523,7 +1523,6 @@ public:
 	 */
 	int find(onestring str, size_t pos = 0)
 	{
-
 		// if pos is greater than the onestring length throws error
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
@@ -1555,6 +1554,9 @@ public:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refractor: address format linter issues
 	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
 	 * \param str string to search for.
@@ -1605,15 +1607,21 @@ public:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	
 
 	/** Searches the string for the last occurrence of the sequence specified by its arguments. 
 	 * \param str string to search for. 
 	 * \param pos position of the last character in the string to be considered in the search
+=======
+	/** Searches the string for the last occurrence of the sequence specified by
+	 * its arguments. \param str string to search for. \param pos position of
+	 * the last character in the string to be considered in the search
+>>>>>>> refractor: address format linter issues
 	 */
 
-	int find_last_not_of(const std::string& str, size_t pos = npos )
+	int find_last_not_of(const std::string& str, size_t pos = npos)
 	{
 		// if the index end position is greater than the onestring length
 		// throws error
@@ -1624,29 +1632,34 @@ public:
 
 		int match = -1;
 
-		// iterate over the chars of the giving string one by one, the loop 
-		// limit depending on the position value		
-		for (size_t i = 0; i < (pos == npos ? this->_elements : pos == str.length() ? pos : pos + 1); ++i){
+		// iterate over the chars of the giving string one by one, the loop
+		// limit depending on the position value
+		for (size_t i = 0;
+			 i < (pos == npos ? this->_elements
+							  : pos == str.length() ? pos : pos + 1);
+			 ++i) {
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
-				if(str.find(this->c_str()[i]) != npos) {
+				if (str.find(this->c_str()[i]) != npos) {
 					break;
-				}else {
-					// stores the index value and update it until it reach the last
+				} else {
+					// stores the index value and update it until it reach the
+					// last
 					match = i;
 					break;
 				}
 			}
 		}
-		// verify all characters are found, if not return the last position stored
+		// verify all characters are found, if not return the last position
+		// stored
 		if (match == -1) {
 			return -1;
-		}else {
+		} else {
 			return match;
 		}
-
 	}
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -1656,6 +1669,8 @@ public:
 >>>>>>> feat: add find_first_not of() & find_last_not_of()
 =======
 >>>>>>> feat: complete function & improve comments.
+=======
+>>>>>>> refractor: address format linter issues
 	/*******************************************
 	 * Operators
 	 ********************************************/
