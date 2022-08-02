@@ -127,11 +127,29 @@ void test_code()
 	std::cout << str.find_last_not_of("roller") << std::endl;     // 4
 	std::cout << str.find_last_not_of("alley") << std::endl;     // 7
 	std::cout << str.find_last_not_of("baylroer") << std::endl;     // 0
+	std::cout << str.find_last_not_of("obartleby") << std::endl;     // -1
 	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  // 2
 	std::cout << str.find_last_not_of("toy", 3) << std::endl;  // -1
+<<<<<<< HEAD
 
 
 >>>>>>> test: add tests for find_last_not_of()
+=======
+	std::cout << str.find_last_not_of("mail", 4) << std::endl;  // 3
+	std::cout << str.find_last_not_of("tttyb", 3) << std::endl;  // 2
+	std::cout << str.find_last_not_of("tym", 5) << std::endl;  // 5
+	std::cout << str.find_last_not_of("tambourine", 1) << std::endl;  // 1
+	std::cout << str.find_last_not_of("ball", -1) << std::endl;  // 7
+		
+
+	try {
+		std::cout << str.find_last_not_of("body", 10)
+				  << std::endl;  // Caught exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+>>>>>>> feat: add more tests.
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
