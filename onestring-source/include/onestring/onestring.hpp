@@ -1615,21 +1615,30 @@ public:
 
 	int find_last_not_of(const std::string& str, size_t pos = npos )
 	{
+		// if the index end position is greater than the onestring length
+		// throws error
+		if (((pos != npos) && (pos >= this->_elements))) {
+			throw std::out_of_range(
+				"Onestring::find_last_not_of(): specified pos out of range");
+		}
 
 		int match = -1;
 
-		// iterate over the chars of the giving string one by one
-		for (size_t i = 0; i < (pos == npos ? this->_elements : pos == str.length() ? pos : str.length() - 1); ++i){
+		// iterate over the chars of the giving string one by one, the loop 
+		// limit depending on the position value		
+		for (size_t i = 0; i < (pos == npos ? this->_elements : pos == str.length() ? pos : pos + 1); ++i){
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
 				if(str.find(this->c_str()[i]) != npos) {
 					break;
 				}else {
+					// stores the index value and update it until it reach the last
 					match = i;
+					break;
 				}
 			}
 		}
-
+		// verify all characters are found, if not return the last position stored
 		if (match == -1) {
 			return -1;
 		}else {
@@ -1639,11 +1648,14 @@ public:
 	}
 
 
+<<<<<<< HEAD
 
 
 
 
 >>>>>>> feat: add find_first_not of() & find_last_not_of()
+=======
+>>>>>>> feat: complete function & improve comments.
 	/*******************************************
 	 * Operators
 	 ********************************************/
