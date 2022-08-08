@@ -1617,6 +1617,7 @@ public:
 =======
 	/** Searches the string for the last occurrence of the sequence specified by
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * its arguments. \param str string to search for. \param pos position of
 	 * the last character in the string to be considered in the search
 >>>>>>> refractor: address format linter issues
@@ -1625,6 +1626,12 @@ public:
 	 * \param str string to search for. 
 	 * \param pos position of the last character in the string to be considered in the search
 >>>>>>> refractor: improve the function with a reverse loop
+=======
+	 * its arguments.
+	 * \param str string to search for.
+	 * \param pos position of the last character in the string to be considered
+	 * in the search
+>>>>>>> refractor: address format suggestions
 	 */
 
 	int find_last_not_of(const std::string& str, size_t pos = npos)
@@ -1636,19 +1643,23 @@ public:
 				"Onestring::find_last_not_of(): specified pos out of range");
 		}
 
-		// iterate over the chars of the giving string one by one starting from the end 
-		// the loop limit depending on the position value
-		for (size_t i = (pos == npos ? this->_elements - 1 : pos == str.length() ? pos - 1 : pos); i >= 0; --i) {
+		// iterate over the chars of the giving string one by one starting from
+		// the end the loop limit depending on the position value
+		for (size_t i = (pos == npos ? this->_elements - 1
+									 : pos == str.length() ? pos - 1 : pos);
+			 i >= 0;
+			 --i) {
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
 				if (str.find(this->c_str()[i]) == npos) {
 					return i;
-				} 
-			}				
+				}
+			}
 		}
 		return -1;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -1666,6 +1677,8 @@ public:
 
 
 >>>>>>> refractor: improve the function with a reverse loop
+=======
+>>>>>>> refractor: address format suggestions
 	/*******************************************
 	 * Operators
 	 ********************************************/
