@@ -152,7 +152,6 @@ void test_code()
 	std::cout << str.find_last_not_of("tym", 5) << std::endl;         // 5
 >>>>>>> refractor: address format linter issues
 	std::cout << str.find_last_not_of("tambourine", 1) << std::endl;  // 1
-	std::cout << str.find_last_not_of("ball", -1) << std::endl;       // 7
 
 	try {
 		std::cout << str.find_last_not_of("body", 10)
