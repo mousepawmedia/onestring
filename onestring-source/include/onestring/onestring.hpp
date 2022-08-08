@@ -1616,9 +1616,15 @@ public:
 	 * \param pos position of the last character in the string to be considered in the search
 =======
 	/** Searches the string for the last occurrence of the sequence specified by
+<<<<<<< HEAD
 	 * its arguments. \param str string to search for. \param pos position of
 	 * the last character in the string to be considered in the search
 >>>>>>> refractor: address format linter issues
+=======
+	 * its arguments. 
+	 * \param str string to search for. 
+	 * \param pos position of the last character in the string to be considered in the search
+>>>>>>> refractor: improve the function with a reverse loop
 	 */
 
 	int find_last_not_of(const std::string& str, size_t pos = npos)
@@ -1630,35 +1636,20 @@ public:
 				"Onestring::find_last_not_of(): specified pos out of range");
 		}
 
-		int match = -1;
-
-		// iterate over the chars of the giving string one by one, the loop
-		// limit depending on the position value
-		for (size_t i = 0;
-			 i < (pos == npos ? this->_elements
-							  : pos == str.length() ? pos : pos + 1);
-			 ++i) {
+		// iterate over the chars of the giving string one by one starting from the end 
+		// the loop limit depending on the position value
+		for (size_t i = (pos == npos ? this->_elements - 1 : pos == str.length() ? pos - 1 : pos); i >= 0; --i) {
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
-				if (str.find(this->c_str()[i]) != npos) {
-					break;
-				} else {
-					// stores the index value and update it until it reach the
-					// last
-					match = i;
-					break;
-				}
-			}
+				if (str.find(this->c_str()[i]) == npos) {
+					return i;
+				} 
+			}				
 		}
-		// verify all characters are found, if not return the last position
-		// stored
-		if (match == -1) {
-			return -1;
-		} else {
-			return match;
-		}
+		return -1;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -1671,6 +1662,10 @@ public:
 >>>>>>> feat: complete function & improve comments.
 =======
 >>>>>>> refractor: address format linter issues
+=======
+
+
+>>>>>>> refractor: improve the function with a reverse loop
 	/*******************************************
 	 * Operators
 	 ********************************************/
