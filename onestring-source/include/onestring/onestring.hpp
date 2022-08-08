@@ -1644,10 +1644,11 @@ public:
 		}
 
 		// iterate over the chars of the giving string one by one starting from
-		// the end the loop, the limits depending on the position value and string argument's length
-		for (size_t i = (pos == npos ? this->_elements - 1 
-						: pos == str.length() ? pos - 1 : pos);
-			 this->_elements == str.length() ? i >= 0 : i > 0 ;
+		// the end the loop, the limits depending on the position value and
+		// string argument's length
+		for (size_t i = (pos == npos ? this->_elements - 1
+									 : pos == str.length() ? pos - 1 : pos);
+			 this->_elements == str.length() ? i >= 0 : i > 0;
 			 --i) {
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
