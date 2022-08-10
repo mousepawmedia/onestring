@@ -146,12 +146,17 @@ void test_code()
 	std::cout << str.find_last_not_of("baylroer") << std::endl;       // 0
 	std::cout << str.find_last_not_of("obartleby") << std::endl;      // -1
 	std::cout << str.find_last_not_of("trleba", 2) << std::endl;      // 2
-	std::cout << str.find_last_not_of("toy", 3) << std::endl;         // -1
-	std::cout << str.find_last_not_of("mail", 4) << std::endl;        // 3
+	std::cout << str.find_last_not_of("toy", 3) << std::endl;         // 3
+	std::cout << str.find_last_not_of("joy", 1) << std::endl;     	  // 0
 	std::cout << str.find_last_not_of("tttyb", 3) << std::endl;       // 2
+<<<<<<< HEAD
 	std::cout << str.find_last_not_of("tym", 5) << std::endl;         // 5
 >>>>>>> refractor: address format linter issues
 	std::cout << str.find_last_not_of("tambourine", 1) << std::endl;  // 1
+=======
+	std::cout << str.find_last_not_of("aobyt", 4) << std::endl;       // -1
+	std::cout << str.find_last_not_of("battery", 9) << std::endl;    // specified pos out of range
+>>>>>>> test: add a test & correct some others
 
 	try {
 		std::cout << str.find_last_not_of("body", 10)
