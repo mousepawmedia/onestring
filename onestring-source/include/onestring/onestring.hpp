@@ -1644,12 +1644,8 @@ public:
 		}
 
 		// iterate over the chars of the giving string one by one starting from
-		// the end the loop, the limits depending on the position value and
-		// string argument's length
-		for (size_t i = (pos == npos ? this->_elements - 1
-									 : pos == str.length() ? pos - 1 : pos);
-			 this->_elements == str.length() ? i >= 0 : i > 0;
-			 --i) {
+		// the end the loop, the limits depending on the position value
+		for (size_t i = (pos == npos ? this->_elements - 1 : pos); i >= 0; --i) {
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
 				if (str.find(this->c_str()[i]) == npos) {
