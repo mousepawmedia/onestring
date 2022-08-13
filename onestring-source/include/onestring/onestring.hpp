@@ -1536,7 +1536,11 @@ public:
 			// checks if str[j] matches with c_str()[i + j], when no match it
 			// breaks the loop
 			for (size_t j = 0; j < str.length(); ++j) {
+<<<<<<< HEAD
 				if (this->internal[i + j] == str.internal[j]) {
+=======
+				if (this->c_str()[i + j] == str.c_str()[j]) {
+>>>>>>> refractor: improve function
 					matches++;
 				} else {
 					break;
@@ -1634,24 +1638,22 @@ public:
 >>>>>>> refractor: address format suggestions
 	 */
 
-	int find_last_not_of(const std::string& str, size_t pos = npos)
+	int find_last_not_of(onestring str, size_t pos = 0)
 	{
 		// if the index end position is greater than the onestring length
 		// throws error
-		if (((pos != npos) && (pos >= this->_elements))) {
+		if (pos >= this->_elements) {
 			throw std::out_of_range(
 				"Onestring::find_last_not_of(): specified pos out of range");
 		}
 
 		// iterate over the chars of the giving string one by one starting from
 		// the end the loop, the limits depending on the position value
-		for (size_t i = (pos == npos ? this->_elements - 1 : pos); i >= 0; --i) {
+		for (int i = (pos == 0 ? this->_elements - 1 : pos); i >= 0; --i) {
 			// check if the character can be found in the string we're searching
-			for (size_t j = 0; j < str.length(); ++j) {
-				if (str.find(this->c_str()[i]) == npos) {
+			if (str.find(this->c_str()[i]) == -1) {
 					return i;
-				}
-			}
+			}			
 		}
 		return -1;
 	}
