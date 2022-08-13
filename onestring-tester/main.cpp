@@ -169,9 +169,13 @@ void test_code()
 	std::cout << str.find_last_not_of("joy", 1) << std::endl;     // 0
 	std::cout << str.find_last_not_of("tttyb", 3) << std::endl;   // 2
 	std::cout << str.find_last_not_of("aobyt", 4) << std::endl;   // -1
+<<<<<<< HEAD
 	std::cout << str.find_last_not_of("battery", 9)
 			  << std::endl;  // specified pos out of range
 >>>>>>> refractor: address format issues
+=======
+
+>>>>>>> test: remove a test causing a pos out range output
 
 	try {
 		std::cout << str.find_last_not_of("body", 10)
@@ -180,10 +184,14 @@ void test_code()
 		std::cout << "Caught exception" << std::endl;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 >>>>>>> feat: add more tests.
 =======
 >>>>>>> refractor: address format linter issues
+=======
+
+>>>>>>> test: remove a test causing a pos out range output
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
