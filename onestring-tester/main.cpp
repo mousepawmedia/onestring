@@ -57,22 +57,54 @@
  */
 void test_code()
 {
-	onestring str = "abcd";
+	onestring ostr_test_one = "abcd";
+	onestring ostr_test_two = "(>o_o)> ==>";
+	onestring ostr_test_three = "dcba";
+	std::string str_test = "bc";
+	const char* cstr_test = "dc";
 
-	std::cout << str.find("z") << std::endl;
-	std::cout << str.find("da") << std::endl;
-	std::cout << str.find("bc") << std::endl;
-	std::cout << str.find("cd") << std::endl;
-	std::cout << str.find("bc", 3) << std::endl;
-	std::cout << str.find("bc", 1) << std::endl;
-	std::cout << str.find("d", 3) << std::endl;
-	std::cout << str.find("a") << std::endl;
+
+	std::cout << ostr_test_one.find("z") << std::endl; // -1
+	std::cout << ostr_test_one.find("da") << std::endl; // -1
+	std::cout << ostr_test_one.find("bc") << std::endl; // 1
+	std::cout << ostr_test_one.find("cd") << std::endl; // 2
+	std::cout << ostr_test_one.find("bc", 3) << std::endl; // -1
+	std::cout << ostr_test_one.find("bc", 1) << std::endl; // 1
+	std::cout << ostr_test_one.find("d", 3) << std::endl; // 3
+	std::cout << ostr_test_one.find("a") << std::endl; // 0
+	std::cout << ostr_test_two.find("==>") << std::endl; // 8
+	std::cout << ostr_test_two.find("(>o", 4) << std::endl; // -1
+	std::cout << ostr_test_two.find("> ==>", 5) << std::endl; // 6
 
 	try {
-		std::cout << str.find("d", 4) << std::endl;  // exception
+		std::cout << ostr_test_one.find("d", 4) << std::endl;  // exception
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
+
+	std::cout << "\n ---TESTING std:string--- \n" << std::endl;
+
+	std::cout << ostr_test_one.find(str_test, 3) << std::endl; // -1
+	std::cout << ostr_test_one.find(str_test, 1) << std::endl; // 1
+
+	try {
+		std::cout << ostr_test_one.find(str_test, 4) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	std::cout << "\n ---TESTING char*--- \n" << std::endl;
+
+	std::cout << ostr_test_one.find(cstr_test, 3) << std::endl; // -1
+	std::cout << ostr_test_one.find(cstr_test) << std::endl; // -1
+
+	try {
+		std::cout << ostr_test_one.find(cstr_test, 7) << std::endl; // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	std::cout << ostr_test_three.find(cstr_test) << std::endl; // 0
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
