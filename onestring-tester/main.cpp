@@ -62,19 +62,19 @@ void test_code()
 	onestring ostr_test_three = "dcba";
 	std::string str_test = "bc";
 	const char* cstr_test = "dc";
+	onestring emojis = "🏁🍇🍿🍉"; 
 
-
-	std::cout << ostr_test_one.find("z") << std::endl; // -1
-	std::cout << ostr_test_one.find("da") << std::endl; // -1
-	std::cout << ostr_test_one.find("bc") << std::endl; // 1
-	std::cout << ostr_test_one.find("cd") << std::endl; // 2
-	std::cout << ostr_test_one.find("bc", 3) << std::endl; // -1
-	std::cout << ostr_test_one.find("bc", 1) << std::endl; // 1
-	std::cout << ostr_test_one.find("d", 3) << std::endl; // 3
-	std::cout << ostr_test_one.find("a") << std::endl; // 0
-	std::cout << ostr_test_two.find("==>") << std::endl; // 8
-	std::cout << ostr_test_two.find("(>o", 4) << std::endl; // -1
-	std::cout << ostr_test_two.find("> ==>", 5) << std::endl; // 6
+	std::cout << ostr_test_one.find("z") << std::endl;         // -1
+	std::cout << ostr_test_one.find("da") << std::endl;        // -1
+	std::cout << ostr_test_one.find("bc") << std::endl;        // 1
+	std::cout << ostr_test_one.find("cd") << std::endl;        // 2
+	std::cout << ostr_test_one.find("bc", 3) << std::endl;     // -1
+	std::cout << ostr_test_one.find("bc", 1) << std::endl;     // 1
+	std::cout << ostr_test_one.find("d", 3) << std::endl;      // 3
+	std::cout << ostr_test_one.find("a") << std::endl;         // 0
+	std::cout << ostr_test_two.find("==>") << std::endl;       // 8
+	std::cout << ostr_test_two.find("(>o", 4) << std::endl;    // -1
+	std::cout << ostr_test_two.find("> ==>", 5) << std::endl;  // 6
 
 	try {
 		std::cout << ostr_test_one.find("d", 4) << std::endl;  // exception
@@ -84,8 +84,8 @@ void test_code()
 
 	std::cout << "\n ---TESTING std:string--- \n" << std::endl;
 
-	std::cout << ostr_test_one.find(str_test, 3) << std::endl; // -1
-	std::cout << ostr_test_one.find(str_test, 1) << std::endl; // 1
+	std::cout << ostr_test_one.find(str_test, 3) << std::endl;  // -1
+	std::cout << ostr_test_one.find(str_test, 1) << std::endl;  // 1
 
 	try {
 		std::cout << ostr_test_one.find(str_test, 4) << std::endl;  // exception
@@ -95,16 +95,30 @@ void test_code()
 
 	std::cout << "\n ---TESTING char*--- \n" << std::endl;
 
-	std::cout << ostr_test_one.find(cstr_test, 3) << std::endl; // -1
-	std::cout << ostr_test_one.find(cstr_test) << std::endl; // -1
+	std::cout << ostr_test_one.find(cstr_test, 3) << std::endl;  // -1
+	std::cout << ostr_test_one.find(cstr_test) << std::endl;     // -1
 
 	try {
-		std::cout << ostr_test_one.find(cstr_test, 7) << std::endl; // exception
+		std::cout << ostr_test_one.find(cstr_test, 7) << std::endl;  // exception
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
-	std::cout << ostr_test_three.find(cstr_test) << std::endl; // 0
+	std::cout << ostr_test_three.find(cstr_test) << std::endl;  // 0
+
+	std::cout << "\n ---TESTING emojis--- \n" << std::endl;
+
+	std::cout << emojis.find("🍇") << std::endl;  // 1
+	std::cout << emojis.find("🍇", 2) << std::endl;  // -1
+	std::cout << emojis.find("🍿🍉", 1) << std::endl;  // 2
+	std::cout << emojis.find("🏁") << std::endl;  // 0
+	std::cout << emojis.find("😀") << std::endl;  // -1
+
+	try {
+		std::cout << emojis.find("🔤", 4)<< std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////

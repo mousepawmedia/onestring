@@ -1505,7 +1505,7 @@ public:
 	int find(const std::string& str, size_t pos = 0)
 	{
 		onestring rhs = str;
-		
+
 		return this->find(rhs, pos);
 	}
 
