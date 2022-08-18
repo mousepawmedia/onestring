@@ -1536,11 +1536,7 @@ public:
 			// checks if str[j] matches with c_str()[i + j], when no match it
 			// breaks the loop
 			for (size_t j = 0; j < str.length(); ++j) {
-<<<<<<< HEAD
 				if (this->internal[i + j] == str.internal[j]) {
-=======
-				if (this->c_str()[i + j] == str.c_str()[j]) {
->>>>>>> refractor: improve function
 					matches++;
 				} else {
 					break;
@@ -1557,10 +1553,7 @@ public:
 		return -1;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refractor: address format linter issues
+
 	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
 	 * \param str string to search for.
@@ -1572,11 +1565,6 @@ public:
 	{
 		// if the index start position is greater than the onestring length
 		// throws error
-=======
-	int find_first_not_of(const std::string& str, size_t pos = 0)
-	{
-		// if pos is greater than the onestring length throws error
->>>>>>> feat: add find_first_not of() & find_last_not_of()
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
 				"Onestring::find_first_not_of(): specified pos out of range");
@@ -1588,20 +1576,13 @@ public:
 			size_t matches = 0;
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
-<<<<<<< HEAD
 				if (str.find(this->c_str()[i]) != npos) {
-=======
-				if (this->c_str()[i] == str[j]) {
->>>>>>> feat: add find_first_not of() & find_last_not_of()
 					matches++;
 					break;
 				}
 			}
-<<<<<<< HEAD
+
 			// verify the none equivalence of chars, then return the position
-=======
-			// verify the none coincidence of chars, then return the position
->>>>>>> feat: add find_first_not of() & find_last_not_of()
 			if (matches == 0) {
 				return i;
 			}
@@ -1610,32 +1591,9 @@ public:
 		return -1;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	
-
 	/** Searches the string for the last occurrence of the sequence specified by its arguments. 
 	 * \param str string to search for. 
 	 * \param pos position of the last character in the string to be considered in the search
-=======
-	/** Searches the string for the last occurrence of the sequence specified by
-<<<<<<< HEAD
-<<<<<<< HEAD
-	 * its arguments. \param str string to search for. \param pos position of
-	 * the last character in the string to be considered in the search
->>>>>>> refractor: address format linter issues
-=======
-	 * its arguments. 
-	 * \param str string to search for. 
-	 * \param pos position of the last character in the string to be considered in the search
->>>>>>> refractor: improve the function with a reverse loop
-=======
-	 * its arguments.
-	 * \param str string to search for.
-	 * \param pos position of the last character in the string to be considered
-	 * in the search
->>>>>>> refractor: address format suggestions
 	 */
 
 	int find_last_not_of(onestring str, size_t pos = 0)
@@ -1658,26 +1616,6 @@ public:
 		return -1;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-
-
-
-
->>>>>>> feat: add find_first_not of() & find_last_not_of()
-=======
->>>>>>> feat: complete function & improve comments.
-=======
->>>>>>> refractor: address format linter issues
-=======
-
-
->>>>>>> refractor: improve the function with a reverse loop
-=======
->>>>>>> refractor: address format suggestions
 	/*******************************************
 	 * Operators
 	 ********************************************/

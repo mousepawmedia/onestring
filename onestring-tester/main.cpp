@@ -57,74 +57,8 @@
  */
 void test_code()
 {
-<<<<<<< HEAD
-	onestring ostr_test_one = "abcd";
-	onestring ostr_test_two = "(>o_o)> ==>";
-	onestring ostr_test_three = "dcba";
-	std::string str_test = "bc";
-	const char* cstr_test = "dc";
-	onestring emojis = "🏁🍇🍿🍉"; 
-
-	std::cout << ostr_test_one.find("z") << std::endl;         // -1
-	std::cout << ostr_test_one.find("da") << std::endl;        // -1
-	std::cout << ostr_test_one.find("bc") << std::endl;        // 1
-	std::cout << ostr_test_one.find("cd") << std::endl;        // 2
-	std::cout << ostr_test_one.find("bc", 3) << std::endl;     // -1
-	std::cout << ostr_test_one.find("bc", 1) << std::endl;     // 1
-	std::cout << ostr_test_one.find("d", 3) << std::endl;      // 3
-	std::cout << ostr_test_one.find("a") << std::endl;         // 0
-	std::cout << ostr_test_two.find("==>") << std::endl;       // 8
-	std::cout << ostr_test_two.find("(>o", 4) << std::endl;    // -1
-	std::cout << ostr_test_two.find("> ==>", 5) << std::endl;  // 6
-
-	try {
-		std::cout << ostr_test_one.find("d", 4) << std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	std::cout << "\n ---TESTING std:string--- \n" << std::endl;
-
-	std::cout << ostr_test_one.find(str_test, 3) << std::endl;  // -1
-	std::cout << ostr_test_one.find(str_test, 1) << std::endl;  // 1
-
-	try {
-		std::cout << ostr_test_one.find(str_test, 4) << std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	std::cout << "\n ---TESTING char*--- \n" << std::endl;
-
-	std::cout << ostr_test_one.find(cstr_test, 3) << std::endl;  // -1
-	std::cout << ostr_test_one.find(cstr_test) << std::endl;     // -1
-
-	try {
-		std::cout << ostr_test_one.find(cstr_test, 7) << std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-
-	std::cout << ostr_test_three.find(cstr_test) << std::endl;  // 0
-
-	std::cout << "\n ---TESTING emojis--- \n" << std::endl;
-
-	std::cout << emojis.find("🍇") << std::endl;  // 1
-	std::cout << emojis.find("🍇", 2) << std::endl;  // -1
-	std::cout << emojis.find("🍿🍉", 1) << std::endl;  // 2
-	std::cout << emojis.find("🏁") << std::endl;  // 0
-	std::cout << emojis.find("😀") << std::endl;  // -1
-
-	try {
-		std::cout << emojis.find("🔤", 4)<< std::endl;  // exception
-	} catch (const std::out_of_range&) {
-		std::cout << "Caught exception" << std::endl;
-	}
-=======
 	onestring str = "tyobaler";
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	std::cout << str.find_last_not_of("battery") << std::endl;      // 5
 	std::cout << str.find_last_not_of("roller") << std::endl;     // 4
 	std::cout << str.find_last_not_of("alley") << std::endl;     // 7
@@ -132,50 +66,6 @@ void test_code()
 	std::cout << str.find_last_not_of("obartleby") << std::endl;     // -1
 	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  // 2
 	std::cout << str.find_last_not_of("toy", 3) << std::endl;  // -1
-<<<<<<< HEAD
-
-
->>>>>>> test: add tests for find_last_not_of()
-=======
-	std::cout << str.find_last_not_of("mail", 4) << std::endl;  // 3
-	std::cout << str.find_last_not_of("tttyb", 3) << std::endl;  // 2
-	std::cout << str.find_last_not_of("tym", 5) << std::endl;  // 5
-=======
-	std::cout << str.find_last_not_of("battery") << std::endl;        // 5
-	std::cout << str.find_last_not_of("roller") << std::endl;         // 4
-	std::cout << str.find_last_not_of("alley") << std::endl;          // 7
-	std::cout << str.find_last_not_of("baylroer") << std::endl;       // 0
-	std::cout << str.find_last_not_of("obartleby") << std::endl;      // -1
-	std::cout << str.find_last_not_of("trleba", 2) << std::endl;      // 2
-	std::cout << str.find_last_not_of("toy", 3) << std::endl;         // 3
-	std::cout << str.find_last_not_of("joy", 1) << std::endl;     	  // 0
-	std::cout << str.find_last_not_of("tttyb", 3) << std::endl;       // 2
-<<<<<<< HEAD
-	std::cout << str.find_last_not_of("tym", 5) << std::endl;         // 5
->>>>>>> refractor: address format linter issues
-	std::cout << str.find_last_not_of("tambourine", 1) << std::endl;  // 1
-=======
-	std::cout << str.find_last_not_of("aobyt", 4) << std::endl;       // -1
-	std::cout << str.find_last_not_of("battery", 9) << std::endl;    // specified pos out of range
->>>>>>> test: add a test & correct some others
-=======
-	std::cout << str.find_last_not_of("battery") << std::endl;    // 5
-	std::cout << str.find_last_not_of("roller") << std::endl;     // 4
-	std::cout << str.find_last_not_of("alley") << std::endl;      // 7
-	std::cout << str.find_last_not_of("baylroer") << std::endl;   // 0
-	std::cout << str.find_last_not_of("obartleby") << std::endl;  // -1
-	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  // 2
-	std::cout << str.find_last_not_of("toy", 3) << std::endl;     // 3
-	std::cout << str.find_last_not_of("joy", 1) << std::endl;     // 0
-	std::cout << str.find_last_not_of("tttyb", 3) << std::endl;   // 2
-	std::cout << str.find_last_not_of("aobyt", 4) << std::endl;   // -1
-<<<<<<< HEAD
-	std::cout << str.find_last_not_of("battery", 9)
-			  << std::endl;  // specified pos out of range
->>>>>>> refractor: address format issues
-=======
-
->>>>>>> test: remove a test causing a pos out range output
 
 	try {
 		std::cout << str.find_last_not_of("body", 10)
@@ -183,15 +73,6 @@ void test_code()
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-
->>>>>>> feat: add more tests.
-=======
->>>>>>> refractor: address format linter issues
-=======
-
->>>>>>> test: remove a test causing a pos out range output
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
