@@ -57,65 +57,57 @@
  */
 void test_code()
 {
-	onestring ostr_test_one = "abcd";
-	onestring ostr_test_two = "(>o_o)> ==>";
-	onestring ostr_test_three = "dcba";
-	std::string str_test = "bc";
-	const char* cstr_test = "dc";
-	onestring emojis = "🏁🍇🍿🍉"; 
+	onestring str = "tyobaler";
 
-	std::cout << ostr_test_one.find("z") << std::endl;         // -1
-	std::cout << ostr_test_one.find("da") << std::endl;        // -1
-	std::cout << ostr_test_one.find("bc") << std::endl;        // 1
-	std::cout << ostr_test_one.find("cd") << std::endl;        // 2
-	std::cout << ostr_test_one.find("bc", 3) << std::endl;     // -1
-	std::cout << ostr_test_one.find("bc", 1) << std::endl;     // 1
-	std::cout << ostr_test_one.find("d", 3) << std::endl;      // 3
-	std::cout << ostr_test_one.find("a") << std::endl;         // 0
-	std::cout << ostr_test_two.find("==>") << std::endl;       // 8
-	std::cout << ostr_test_two.find("(>o", 4) << std::endl;    // -1
-	std::cout << ostr_test_two.find("> ==>", 5) << std::endl;  // 6
+	// Str test
+
+	std::cout << str.find_last_not_of("battery") << std::endl;    // 5
+	std::cout << str.find_last_not_of("roller") << std::endl;     // 4
+	std::cout << str.find_last_not_of("alley") << std::endl;      // 7
+	std::cout << str.find_last_not_of("baylroer") << std::endl;   // 0
+	std::cout << str.find_last_not_of("obartleby") << std::endl;  // -1
+	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  // 2
+	std::cout << str.find_last_not_of("toy", 3) << std::endl;     // 3
+	std::cout << str.find_last_not_of('e') << std::endl;          // 7
 
 	try {
-		std::cout << ostr_test_one.find("d", 4) << std::endl;  // exception
+		std::cout << str.find_last_not_of("body", 10)  // Caught exception
+				  << std::endl;
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
-	std::cout << "\n ---TESTING std:string--- \n" << std::endl;
-
-	std::cout << ostr_test_one.find(str_test, 3) << std::endl;  // -1
-	std::cout << ostr_test_one.find(str_test, 1) << std::endl;  // 1
-
 	try {
-		std::cout << ostr_test_one.find(str_test, 4) << std::endl;  // exception
+		std::cout << str.find_last_not_of("bbristya", 8)  // Caught exception
+				  << std::endl;
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
-	std::cout << "\n ---TESTING char*--- \n" << std::endl;
+	onestring emojis = "🌝⛄👽🐲🪗";
 
-	std::cout << ostr_test_one.find(cstr_test, 3) << std::endl;  // -1
-	std::cout << ostr_test_one.find(cstr_test) << std::endl;     // -1
+	// Emoji test
+	std::cout << emojis.find_last_not_of("🥁🐝📡🌝🪗")
+			  << std::endl;  // 3
+	std::cout << emojis.find_last_not_of("🌝⛄👽🐲🪗🐝")
+			  << std::endl;                                      // -1
+	std::cout << emojis.find_last_not_of("⛄🐲", 3) << std::endl;  // 2
+	std::cout << emojis.find_last_not_of("⛄🐲🪗📡", 1)
+			  << std::endl;                                         // 0
+	std::cout << emojis.find_last_not_of("🥁🐝") << std::endl;  // 4
 
 	try {
-		std::cout << ostr_test_one.find(cstr_test, 7) << std::endl;  // exception
+		std::cout << emojis.find_last_not_of("⛄🐲", 5)
+				  << std::endl;  // Caught exception
+
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
-	std::cout << ostr_test_three.find(cstr_test) << std::endl;  // 0
-
-	std::cout << "\n ---TESTING emojis--- \n" << std::endl;
-
-	std::cout << emojis.find("🍇") << std::endl;  // 1
-	std::cout << emojis.find("🍇", 2) << std::endl;  // -1
-	std::cout << emojis.find("🍿🍉", 1) << std::endl;  // 2
-	std::cout << emojis.find("🏁") << std::endl;  // 0
-	std::cout << emojis.find("😀") << std::endl;  // -1
-
 	try {
-		std::cout << emojis.find("🔤", 4)<< std::endl;  // exception
+		std::cout << emojis.find_last_not_of("🍀", 6)
+				  << std::endl;  // Caught exception
+
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}

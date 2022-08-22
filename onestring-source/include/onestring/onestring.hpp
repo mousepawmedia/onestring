@@ -55,6 +55,7 @@
 #include <iostream>
 #include <istream>
 #include <locale>  // std::toupper, std::tolower, std::locale
+#include <string>
 
 #include "onestring/onechar.hpp"
 
@@ -1579,8 +1580,51 @@ public:
 					break;
 				}
 			}
+
 			// verify the none equivalence of chars, then return the position
 			if (matches == 0) {
+				return i;
+			}
+		}
+		// returns -1 in case all characters are found
+		return -1;
+	}
+
+	/** Overload functions to convert str::string or char to a new Onestring
+	 * for later comparition in function
+	 */
+
+	int find_last_not_of(const std::string& str, size_t pos = 0)
+	{
+		onestring rhs = str;
+		return this->find_last_not_of(rhs, pos);
+	}
+
+	int find_last_not_of(const char* cstr, size_t pos = 0)
+	{
+		onestring rhs = cstr;
+		return this->find_last_not_of(rhs, pos);
+	}
+
+	/** Searches the string for the last occurrence of the sequence specified by
+	 * its arguments. \param str string to search for. \param pos position of
+	 * the last character in the string to be considered in the search
+	 */
+
+	int find_last_not_of(onestring str, size_t pos = 0)
+	{
+		// if the index end position is greater than the onestring length
+		// throws error
+		if (pos >= this->_elements) {
+			throw std::out_of_range(
+				"Onestring::find_last_not_of(): specified pos out of range");
+		}
+
+		// iterate over the chars of the giving string one by one starting from
+		// the end the loop, the limits depending on the position value
+		for (int i = (pos == 0 ? this->_elements - 1 : pos); i >= 0; --i) {
+			// check if the character can be found in the string we're searching
+			if (str.find(this->internal[i]) == -1) {
 				return i;
 			}
 		}
