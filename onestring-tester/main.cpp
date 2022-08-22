@@ -59,20 +59,54 @@ void test_code()
 {
 	onestring str = "tyobaler";
 
+	// Str test
+
 	std::cout << str.find_last_not_of("battery") << std::endl;      // 5
-	std::cout << str.find_last_not_of("roller") << std::endl;     // 4
-	std::cout << str.find_last_not_of("alley") << std::endl;     // 7
+	std::cout << str.find_last_not_of("roller") << std::endl;     	// 4
+	std::cout << str.find_last_not_of("alley") << std::endl;     	// 7
 	std::cout << str.find_last_not_of("baylroer") << std::endl;     // 0
-	std::cout << str.find_last_not_of("obartleby") << std::endl;     // -1
-	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  // 2
-	std::cout << str.find_last_not_of("toy", 3) << std::endl;  // -1
+	std::cout << str.find_last_not_of("obartleby") << std::endl;    // -1
+	std::cout << str.find_last_not_of("trleba", 2) << std::endl;  	// 2
+	std::cout << str.find_last_not_of("toy", 3) << std::endl;  		// 3
+	std::cout << str.find_last_not_of('e') << std::endl;  			// 7
 
 	try {
-		std::cout << str.find_last_not_of("body", 10)
-				  << std::endl;  // Caught exception
+		std::cout << str.find_last_not_of("body", 10)				// Caught exception
+				  << std::endl;  
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
+
+	try {
+		std::cout << str.find_last_not_of("bbristya", 8)			// Caught exception
+				  << std::endl;  
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	onestring emojis = "🌝⛄👽🐲🪗";
+
+	// Emoji test
+	std::cout << emojis.find_last_not_of("🥁🐝📡🌝🪗") << std::endl;    // 3
+	std::cout << emojis.find_last_not_of("🌝⛄👽🐲🪗🐝") << std::endl;  // -1
+	std::cout << emojis.find_last_not_of("⛄🐲", 3) << std::endl;       // 2
+	std::cout << emojis.find_last_not_of("⛄🐲🪗📡", 1) << std::endl;   // 0
+	std::cout << emojis.find_last_not_of("🥁🐝") << std::endl;   		// 4
+
+	try {
+		std::cout << emojis.find_last_not_of("⛄🐲", 5) << std::endl;   // Caught exception
+
+	}catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+	
+	try {
+		std::cout << emojis.find_last_not_of("🍀", 6) << std::endl;   // Caught exception
+
+	}catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
