@@ -1553,7 +1553,6 @@ public:
 		return -1;
 	}
 
-
 	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
 	 * \param str string to search for.
@@ -1591,6 +1590,22 @@ public:
 		return -1;
 	}
 
+	/** Overload functions to convert str::string or char to a new Onestring 
+	 * for later comparition in function 
+	 */
+
+	int find_last_not_of(const std::string& str, size_t pos = 0)
+	{
+		onestring rhs = str;
+		return this->find_last_not_of(rhs, pos);
+	}
+
+	int find_last_not_of(const char* cstr, size_t pos = 0)
+	{
+		onestring rhs = cstr;
+		return this->find_last_not_of(rhs, pos);
+	}
+
 	/** Searches the string for the last occurrence of the sequence specified by its arguments. 
 	 * \param str string to search for. 
 	 * \param pos position of the last character in the string to be considered in the search
@@ -1609,10 +1624,11 @@ public:
 		// the end the loop, the limits depending on the position value
 		for (int i = (pos == 0 ? this->_elements - 1 : pos); i >= 0; --i) {
 			// check if the character can be found in the string we're searching
-			if (str.find(this->c_str()[i]) == -1) {
+			if (str.find(this->internal[i]) == -1) {
 					return i;
 			}			
 		}
+		// returns -1 in case all characters are found
 		return -1;
 	}
 
