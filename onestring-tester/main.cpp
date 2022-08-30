@@ -61,14 +61,14 @@ void test_code()
 
 	onestring str = "bold";
 
-	std::cout << str.find_first_not_of("body") << std::endl; 		  // 2
-	std::cout << str.find_first_not_of("world") << std::endl; 		  // 0
-	std::cout << str.find_first_not_of("art") << std::endl; 		  // 0
-	std::cout << str.find_first_not_of("glad", 2) << std::endl; 	  // -1
-	std::cout << str.find_first_not_of("bow", 3) << std::endl; 		  // 3
-	std::cout << str.find_first_not_of("oolb", 1) << std::endl; 	  // 3
-	std::cout << str.find_first_not_of("ballet") << std::endl; 		  // 1
-	std::cout << str.find_first_not_of('b') << std::endl; 		  	  // 1
+	std::cout << str.find_first_not_of("body") << std::endl;     // 2
+	std::cout << str.find_first_not_of("world") << std::endl;    // 0
+	std::cout << str.find_first_not_of("art") << std::endl;      // 0
+	std::cout << str.find_first_not_of("glad", 2) << std::endl;  // -1
+	std::cout << str.find_first_not_of("bow", 3) << std::endl;   // 3
+	std::cout << str.find_first_not_of("oolb", 1) << std::endl;  // 3
+	std::cout << str.find_first_not_of("ballet") << std::endl;   // 1
+	std::cout << str.find_first_not_of('b') << std::endl;        // 1
 
 	try {
 		std::cout << str.find_first_not_of("body", 4)  // Caught exception
@@ -90,10 +90,10 @@ void test_code()
 	std::cout << emojis.find_first_not_of("🥁🐝📡🌝🪗")
 			  << std::endl;  // 1
 	std::cout << emojis.find_first_not_of("🌝⛄👽🐲🪗🐝")
-			  << std::endl;                                      // -1
+			  << std::endl;                                       // -1
 	std::cout << emojis.find_first_not_of("⛄🐲", 3) << std::endl;  // 4
 	std::cout << emojis.find_first_not_of("⛄🐲🪗📡", 1)
-			  << std::endl;                                         // 2
+			  << std::endl;                                          // 2
 	std::cout << emojis.find_first_not_of("🥁🐝") << std::endl;  // 0
 
 	try {
