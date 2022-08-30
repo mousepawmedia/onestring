@@ -1553,6 +1553,24 @@ public:
 		return -1;
 	}
 
+	/** Overload functions to convert str::string or char to a new Onestring
+	 * for later comparison in function
+	 */
+
+	int find_first_not_of(const std::string& str, size_t pos = 0)
+	{
+		onestring rhs = str;
+
+		return this->find_first_not_of(rhs, pos);
+	}
+
+	int find_first_not_of(const char* cstr, size_t pos = 0)
+	{
+		onestring rhs = cstr;
+
+		return this->find_first_not_of(rhs, pos);
+	}
+
 	/** Searches the string for the first occurrence that does not match any of
 	 * the characters specified by its arguments.
 	 * \param str string to search for.
@@ -1560,7 +1578,7 @@ public:
 	 * in the search
 	 */
 
-	int find_first_not_of(const std::string& str, size_t pos = 0)
+	int find_first_not_of(onestring str, size_t pos = 0)
 	{
 		// if the index start position is greater than the onestring length
 		// throws error
@@ -1575,7 +1593,7 @@ public:
 			size_t matches = 0;
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
-				if (str.find(this->c_str()[i]) != npos) {
+				if (str.find(this->internal[i]) != -1) {
 					matches++;
 					break;
 				}
@@ -1591,7 +1609,7 @@ public:
 	}
 
 	/** Overload functions to convert str::string or char to a new Onestring
-	 * for later comparition in function
+	 * for later comparison in function
 	 */
 
 	int find_last_not_of(const std::string& str, size_t pos = 0)
