@@ -1554,7 +1554,7 @@ public:
 	}
 
 	/** Overload functions to convert str::string or char to a new Onestring
-	 * for later comparition in function
+	 * for later comparison in function
 	 */
 
 	int find_first_not_of(const std::string& str, size_t pos = 0)
@@ -1609,7 +1609,7 @@ public:
 	}
 
 	/** Overload functions to convert str::string or char to a new Onestring
-	 * for later comparition in function
+	 * for later comparison in function
 	 */
 
 	int find_last_not_of(const std::string& str, size_t pos = 0)
