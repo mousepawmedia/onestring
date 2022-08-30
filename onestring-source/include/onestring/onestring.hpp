@@ -1578,7 +1578,7 @@ public:
 	 * in the search
 	 */
 
-	int find_first_not_of(const std::string& str, size_t pos = 0)
+	int find_first_not_of(onestring str, size_t pos = 0)
 	{
 		// if the index start position is greater than the onestring length
 		// throws error
@@ -1593,7 +1593,7 @@ public:
 			size_t matches = 0;
 			// check if the character can be found in the string we're searching
 			for (size_t j = 0; j < str.length(); ++j) {
-				if (str.find(this->c_str()[i]) != npos) {
+				if (str.find(this->internal[i]) != -1) {
 					matches++;
 					break;
 				}
