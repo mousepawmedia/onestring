@@ -1518,9 +1518,10 @@ public:
 	}
 
 	/** Searches for string for the first occurrence of the sequence specified
-	 * by its arguments. 
-	 * \param str string to search for. 
-	 * \param pos position of the first character in the string to be considered in the search
+	 * by its arguments.
+	 * \param str string to search for.
+	 * \param pos position of the first character in the string to be considered
+	 * in the search
 	 */
 	int find(onestring str, size_t pos = 0)
 	{
@@ -1663,10 +1664,10 @@ public:
 	}
 
 	/** Searches for string for the last occurrence of the sequence specified
-	 * by its arguments. 
-	 * \param str onestring to search for. 
-	 * \param pos position of the last character in the string to be considered as the 
-	 * beginning of a match.
+	 * by its arguments.
+	 * \param str onestring to search for.
+	 * \param pos position of the last character in the string to be considered
+	 * as the beginning of a match.
 	 */
 	int rfind(onestring str, size_t pos = 0)
 	{
@@ -1679,20 +1680,21 @@ public:
 		size_t matches = 0;
 
 		// checks onestring chars one by one
-		for (int i = (pos == 0 ? this->_elements - 1 : pos); i >= 0; --i) {
+		for (size_t i = 0; i <= (pos == 0 ? this->_elements - 1 : pos); ++i) {
 			// checks if str[j] matches with c_str()[i + j], when no match it
 			// breaks the loop
-			for (int j = str.length() - 1; j >= 0; --j) {
-				if (this->internal[i - j] == str.internal[j]) {
+			for (size_t j = 0; j < str.length(); ++j) {
+				if (this->internal[i + j] == str.internal[j]) {
 					matches++;
-
-					if (matches == str._elements) {
-						// returns position of the last character of the last match
-						return static_cast<int>(i - j);
-					}
 				} else {
 					break;
 				}
+			}
+
+			if (matches == str._elements) {
+				// returns position of the last character of the last
+				// match
+				return static_cast<int>(i);
 			}
 		}
 

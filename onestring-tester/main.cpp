@@ -61,64 +61,64 @@ void test_code()
 	onestring ostr_test_two = "(>o_o)> ==>";
 	onestring ostr_test_three = "dcba";
 	std::string str_test = "bc";
-	// const char* cstr_test = "dc";
-	onestring emojis = "🏁🍇🍿🍉"; 
+	const char* cstr_test = "dc";
+	onestring emojis = "🏁🍇🍿🍉";
 
 	std::cout << ostr_test_one.rfind("z") << std::endl;         // -1
 	std::cout << ostr_test_one.rfind("da") << std::endl;        // -1
 	std::cout << ostr_test_one.rfind("bc") << std::endl;        // 1
 	std::cout << ostr_test_one.rfind("cd") << std::endl;        // 2
 	std::cout << ostr_test_one.rfind("bc", 3) << std::endl;     // 1
-	std::cout << ostr_test_one.rfind("bc", 1) << std::endl;     // -1
+	std::cout << ostr_test_one.rfind("bc", 1) << std::endl;     // 1
 	std::cout << ostr_test_one.rfind("d", 3) << std::endl;      // 3
 	std::cout << ostr_test_one.rfind("a") << std::endl;         // 0
 	std::cout << ostr_test_two.rfind("==>") << std::endl;       // 8
-	std::cout << ostr_test_two.rfind("(>o", 4) << std::endl;    // 1
+	std::cout << ostr_test_two.rfind("(>o", 4) << std::endl;    // 0
 	std::cout << ostr_test_two.rfind("> ==>", 5) << std::endl;  // -1
 
-	// try {
-	// 	std::cout << ostr_test_one.find("d", 4) << std::endl;  // exception
-	// } catch (const std::out_of_range&) {
-	// 	std::cout << "Caught exception" << std::endl;
-	// }
+	try {
+		std::cout << ostr_test_one.rfind("d", 4) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
 
-	// std::cout << "\n ---TESTING std:string--- \n" << std::endl;
+	std::cout << "\n ---TESTING std:string--- \n" << std::endl;
 
-	// std::cout << ostr_test_one.find(str_test, 3) << std::endl;  // -1
-	// std::cout << ostr_test_one.find(str_test, 1) << std::endl;  // 1
+	std::cout << ostr_test_one.rfind(str_test, 3) << std::endl;  // 1
+	std::cout << ostr_test_one.rfind(str_test, 1) << std::endl;  // 1
 
-	// try {
-	// 	std::cout << ostr_test_one.find(str_test, 4) << std::endl;  // exception
-	// } catch (const std::out_of_range&) {
-	// 	std::cout << "Caught exception" << std::endl;
-	// }
+	try {
+		std::cout << ostr_test_one.rfind(str_test, 4) << std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
 
-	// std::cout << "\n ---TESTING char*--- \n" << std::endl;
+	std::cout << "\n ---TESTING char*--- \n" << std::endl;
 
-	// std::cout << ostr_test_one.find(cstr_test, 3) << std::endl;  // -1
-	// std::cout << ostr_test_one.find(cstr_test) << std::endl;     // -1
+	std::cout << ostr_test_one.rfind(cstr_test, 3) << std::endl;  // -1
+	std::cout << ostr_test_one.rfind(cstr_test) << std::endl;     // -1
 
-	// try {
-	// 	std::cout << ostr_test_one.find(cstr_test, 7) << std::endl;  // exception
-	// } catch (const std::out_of_range&) {
-	// 	std::cout << "Caught exception" << std::endl;
-	// }
+	try {
+		std::cout << ostr_test_one.rfind(cstr_test, 7) << std::endl;  //exception 
+	} catch (const std::out_of_range&) { 	
+		std::cout << "Caught exception" << std::endl;
+	}
 
-	// std::cout << ostr_test_three.find(cstr_test) << std::endl;  // 0
+	std::cout << ostr_test_three.rfind(cstr_test) << std::endl;  // 0
 
-	// std::cout << "\n ---TESTING emojis--- \n" << std::endl;
+	std::cout << "\n ---TESTING emojis--- \n" << std::endl;
 
-	// std::cout << emojis.find("🍇") << std::endl;  // 1
-	// std::cout << emojis.find("🍇", 2) << std::endl;  // -1
-	// std::cout << emojis.find("🍿🍉", 1) << std::endl;  // 2
-	// std::cout << emojis.find("🏁") << std::endl;  // 0
-	// std::cout << emojis.find("😀") << std::endl;  // -1
+	std::cout << emojis.rfind("🍇") << std::endl;  // 1
+	std::cout << emojis.rfind("🍇", 2) << std::endl;  // 1
+	std::cout << emojis.rfind("🍿🍉", 1) << std::endl;  // -1
+	std::cout << emojis.rfind("🏁") << std::endl;  // 0
+	std::cout << emojis.rfind("😀") << std::endl;  // -1
 
-	// try {
-	// 	std::cout << emojis.find("🔤", 4)<< std::endl;  // exception
-	// } catch (const std::out_of_range&) {
-	// 	std::cout << "Caught exception" << std::endl;
-	// }
+	try {
+		std::cout << emojis.rfind("🔤", 4)<< std::endl;  // exception
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
