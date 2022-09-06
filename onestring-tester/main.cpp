@@ -61,15 +61,15 @@ void test_code()
 
 	onestring str = "vanish";
 
-	std::cout << str.find_first_of("vow") << std::endl;      	// 0
-	std::cout << str.find_first_of("plane") << std::endl;    	// 1
-	std::cout << str.find_first_of("notion") << std::endl;   	// 2
-	std::cout << str.find_first_of("key") << std::endl;      	// -1
-	std::cout << str.find_first_of("venom", 1) << std::endl;   	// 2
-	std::cout << str.find_first_of("irish", 2) << std::endl;  	// 3
-	std::cout << str.find_first_of("heart", 4) << std::endl;   	// 5
-	std::cout << str.find_first_of('s') << std::endl;        	// 4
-	std::cout << str.find_first_of('a', 2) << std::endl;        // -1
+	std::cout << str.find_first_of("vow") << std::endl;       // 0
+	std::cout << str.find_first_of("plane") << std::endl;     // 1
+	std::cout << str.find_first_of("notion") << std::endl;    // 2
+	std::cout << str.find_first_of("key") << std::endl;       // -1
+	std::cout << str.find_first_of("venom", 1) << std::endl;  // 2
+	std::cout << str.find_first_of("irish", 2) << std::endl;  // 3
+	std::cout << str.find_first_of("heart", 4) << std::endl;  // 5
+	std::cout << str.find_first_of('s') << std::endl;         // 4
+	std::cout << str.find_first_of('a', 2) << std::endl;      // -1
 
 	try {
 		std::cout << str.find_first_of("body", 6)  // Caught exception
@@ -91,13 +91,11 @@ void test_code()
 
 	// emoji test
 	std::cout << emojis.find_first_of("🥁🐝🌝🍀🪗")
-			  << std::endl;  // 0
-	std::cout << emojis.find_first_of("🥁🐝📡")
-			  << std::endl;                                       // -1
-	std::cout << emojis.find_first_of("⛄🪗🌝", 3) << std::endl;  // 4
-	std::cout << emojis.find_first_of("⛄🐲🪗📡", 1)
-			  << std::endl;                                          // 1
-	std::cout << emojis.find_first_of("🍀🐝👽") << std::endl;  // 2
+			  << std::endl;                                                // 0
+	std::cout << emojis.find_first_of("🥁🐝📡") << std::endl;        // -1
+	std::cout << emojis.find_first_of("⛄🪗🌝", 3) << std::endl;      // 4
+	std::cout << emojis.find_first_of("⛄🐲🪗📡", 1) << std::endl;  // 1
+	std::cout << emojis.find_first_of("🍀🐝👽") << std::endl;                 // 2
 
 	try {
 		std::cout << emojis.find_first_of("⛄🐲", 5)
