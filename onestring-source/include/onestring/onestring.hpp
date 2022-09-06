@@ -1730,16 +1730,14 @@ public:
 		}
 
 		// iterate over the chars of the giving string one by one
-		for(size_t i = pos; i < this->_elements; i++){
+		for (size_t i = pos; i < this->_elements; ++i) {
 			// check if the character can be found in the string we're searching
-			if(str.find(this->internal[i]) != -1){
+			if (str.find(this->internal[i]) != -1) {
 				return i;
 			}
 		}
 		// returns -1 in case any character matches
 		return -1;
-
-
 	}
 
 	/*******************************************
