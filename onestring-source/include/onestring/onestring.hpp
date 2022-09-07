@@ -1518,8 +1518,10 @@ public:
 	}
 
 	/** Searches for string for the first occurrence of the sequence specified
-	 * by its arguments. \param str string to search for. \param pos position of
-	 * the first character in the string to be considered in the search
+	 * by its arguments.
+	 * \param str string to search for.
+	 * \param pos position of the first character in the string to be considered
+	 * in the search
 	 */
 	int find(onestring str, size_t pos = 0)
 	{
@@ -1533,8 +1535,7 @@ public:
 
 		// checks onestring chars one by one
 		for (size_t i = pos; i < this->_elements; ++i) {
-			// checks if str[j] matches with c_str()[i + j], when no match it
-			// breaks the loop
+			// checks if contains onechars from str, when no match it breaks the loop
 			for (size_t j = 0; j < str.length(); ++j) {
 				if (this->internal[i + j] == str.internal[j]) {
 					matches++;
@@ -1647,6 +1648,58 @@ public:
 			}
 		}
 		// returns -1 in case all characters are found
+		return -1;
+	}
+
+	int rfind(const std::string& str, size_t pos = 0)
+	{
+		onestring rhs = str;
+
+		return this->rfind(rhs, pos);
+	}
+
+	int rfind(const char* cstr, size_t pos = 0)
+	{
+		onestring rhs = cstr;
+
+		return this->rfind(rhs, pos);
+	}
+
+	/** Searches for string for the last occurrence of the sequence specified
+	 * by its arguments.
+	 * \param str onestring to search for.
+	 * \param pos position of the last character in the string to be considered
+	 * as the beginning of a match.
+	 */
+	int rfind(onestring str, size_t pos = 0)
+	{
+		// if pos is greater than the onestring length throws error
+		if (pos >= this->_elements) {
+			throw std::out_of_range(
+				"Onestring::find(): specified pos out of range");
+		}
+
+		size_t matches = 0;
+
+		// checks onestring chars one by one
+		for (size_t i = 0; i <= (pos == 0 ? this->_elements - 1 : pos); ++i) {
+			// checks if contains onechars from str, when no match it breaks the loop
+			for (size_t j = 0; j < str.length(); ++j) {
+				if (this->internal[i + j] == str.internal[j]) {
+					matches++;
+				} else {
+					break;
+				}
+			}
+
+			if (matches == str._elements) {
+				// returns position of the last character of the last
+				// match
+				return static_cast<int>(i);
+			}
+		}
+
+		// returns -1 when no match
 		return -1;
 	}
 
