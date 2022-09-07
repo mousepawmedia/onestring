@@ -1535,8 +1535,7 @@ public:
 
 		// checks onestring chars one by one
 		for (size_t i = pos; i < this->_elements; ++i) {
-			// checks if str[j] matches with c_str()[i + j], when no match it
-			// breaks the loop
+			// checks if contains onechars from str, when no match it breaks the loop
 			for (size_t j = 0; j < str.length(); ++j) {
 				if (this->internal[i + j] == str.internal[j]) {
 					matches++;
@@ -1684,8 +1683,7 @@ public:
 
 		// checks onestring chars one by one
 		for (size_t i = 0; i <= (pos == 0 ? this->_elements - 1 : pos); ++i) {
-			// checks if str[j] matches with c_str()[i + j], when no match it
-			// breaks the loop
+			// checks if contains onechars from str, when no match it breaks the loop
 			for (size_t j = 0; j < str.length(); ++j) {
 				if (this->internal[i + j] == str.internal[j]) {
 					matches++;
