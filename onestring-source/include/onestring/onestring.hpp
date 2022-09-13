@@ -1703,6 +1703,43 @@ public:
 		return -1;
 	}
 
+	int find_first_of(const std::string& str, size_t pos = 0)
+	{
+		onestring rhs = str;
+		return this->find_first_of(rhs, pos);
+	}
+
+	int find_first_of(const char* cstr, size_t pos = 0)
+	{
+		onestring rhs = cstr;
+		return this->find_first_of(rhs, pos);
+	}
+
+	/** Searches the string for the first occurrence of the sequence specified
+	 * by its arguments. \param str string to search for. \param pos position of
+	 * the first character in the string to be considered in the search
+	 */
+
+	int find_first_of(onestring str, size_t pos = 0)
+	{
+		// if the index start position is greater than the onestring length
+		// throws error
+		if (pos >= this->_elements) {
+			throw std::out_of_range(
+				"Onestring::find_first_of(): specified pos out of range");
+		}
+
+		// iterate over the chars of the giving string one by one
+		for (size_t i = pos; i < this->_elements; ++i) {
+			// check if the character can be found in the string we're searching
+			if (str.find(this->internal[i]) != -1) {
+				return i;
+			}
+		}
+		// returns -1 in case no character matches
+		return -1;
+	}
+
 	/*******************************************
 	 * Operators
 	 ********************************************/
