@@ -78,8 +78,6 @@ void test_code()
 		std::cout << "Caught exception" << std::endl;
 	}
 
-	
-
 	try {
 		std::cout << str.find_first_of("bbristya", 8)  // Caught exception
 				  << std::endl;
@@ -108,7 +106,7 @@ void test_code()
 	try {
 		std::cout << emojis.find_first_of("🍀", 8)
 				  << std::endl;  // Caught exception
-	}catch (const std::out_of_range&) {
+	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 }
