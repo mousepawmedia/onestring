@@ -1736,7 +1736,7 @@ public:
 				return i;
 			}
 		}
-		// returns -1 in case any character matches
+		// returns -1 in case no character matches
 		return -1;
 	}
 
