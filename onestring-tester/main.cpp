@@ -59,27 +59,27 @@ void test_code()
 {
 	// str test
 
-	onestring str = "vanish";
+	onestring str = "lemon";
 
-	std::cout << str.find_first_of("vow") << std::endl;       // 0
-	std::cout << str.find_first_of("plane") << std::endl;     // 1
-	std::cout << str.find_first_of("notion") << std::endl;    // 2
-	std::cout << str.find_first_of("key") << std::endl;       // -1
-	std::cout << str.find_first_of("venom", 1) << std::endl;  // 2
-	std::cout << str.find_first_of("irish", 2) << std::endl;  // 3
-	std::cout << str.find_first_of("heart", 4) << std::endl;  // 5
-	std::cout << str.find_first_of('s') << std::endl;         // 4
-	std::cout << str.find_first_of('a', 2) << std::endl;      // -1
+	std::cout << str.find_last_of("world") << std::endl;       // 3
+	std::cout << str.find_last_of("plane") << std::endl;       // 4
+	std::cout << str.find_last_of("else") << std::endl;        // 1
+	std::cout << str.find_last_of("ray") << std::endl;         // -1
+	std::cout << str.find_last_of("mall", 1) << std::endl;     // 0
+	std::cout << str.find_last_of("leech", 2) << std::endl;    // 1
+	std::cout << str.find_last_of("clamp", 3) << std::endl;    // 2
+	std::cout << str.find_last_of('o') << std::endl;           // 3
+	std::cout << str.find_last_of('o', 2) << std::endl;        // -1
 
 	try {
-		std::cout << str.find_first_of("body", 6)  // Caught exception
+		std::cout << str.find_last_of("frog", 6)  // Caught exception
 				  << std::endl;
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
 	try {
-		std::cout << str.find_first_of("bbristya", 8)  // Caught exception
+		std::cout << str.find_last_of("breeze", 8)  // Caught exception
 				  << std::endl;
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
@@ -88,15 +88,15 @@ void test_code()
 	onestring emojis = "🌝⛄👽🐲🪗";
 
 	// emoji test
-	std::cout << emojis.find_first_of("🥁🐝🌝🍀🪗")
-			  << std::endl;                                                // 0
-	std::cout << emojis.find_first_of("🥁🐝📡") << std::endl;        // -1
-	std::cout << emojis.find_first_of("⛄🪗🌝", 3) << std::endl;      // 4
-	std::cout << emojis.find_first_of("⛄🐲🪗📡", 1) << std::endl;  // 1
-	std::cout << emojis.find_first_of("🍀🐝👽") << std::endl;                 // 2
+	std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗")
+			  << std::endl;                                                // 4
+	std::cout << emojis.find_last_of("🥁🐝📡") << std::endl;        // -1
+	std::cout << emojis.find_last_of("⛄🪗🌝", 3) << std::endl;      // 1
+	std::cout << emojis.find_last_of("⛄🐲🪗📡", 1) << std::endl;  // 1
+	std::cout << emojis.find_last_of("🍀🐝👽") << std::endl;                 // 2
 
 	try {
-		std::cout << emojis.find_first_of("⛄🐲", 5)
+		std::cout << emojis.find_last_of("⛄🐲", 6)
 				  << std::endl;  // Caught exception
 
 	} catch (const std::out_of_range&) {
@@ -104,7 +104,7 @@ void test_code()
 	}
 
 	try {
-		std::cout << emojis.find_first_of("🍀", 8)
+		std::cout << emojis.find_last_of("🍀", 8)
 				  << std::endl;  // Caught exception
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
