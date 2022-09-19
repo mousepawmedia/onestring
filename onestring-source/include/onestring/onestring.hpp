@@ -1766,17 +1766,17 @@ public:
 				"Onestring::find_last_of(): specified pos out of range");
 		}
 
-		// iterate over the chars of the giving string one by one, starting from the end
-		for(int i = (pos == 0 ? this->_elements - 1 : pos); i >= 0; --i){
+		// iterate over the chars of the giving string one by one, starting from
+		// the end
+		for (int i = (pos == 0 ? this->_elements - 1 : pos); i >= 0; --i) {
 			// check if the character can be found in the string we're searching
-			if(str.find(this->internal[i]) != -1){
+			if (str.find(this->internal[i]) != -1) {
 				return i;
 			}
 		}
 		// returns -1 in case no character matches
-		return -1;		
+		return -1;
 	}
-
 
 	/*******************************************
 	 * Operators

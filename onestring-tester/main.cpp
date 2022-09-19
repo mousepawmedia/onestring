@@ -61,15 +61,15 @@ void test_code()
 
 	onestring str = "lemon";
 
-	std::cout << str.find_last_of("world") << std::endl;       // 3
-	std::cout << str.find_last_of("plane") << std::endl;       // 4
-	std::cout << str.find_last_of("else") << std::endl;        // 1
-	std::cout << str.find_last_of("ray") << std::endl;         // -1
-	std::cout << str.find_last_of("mall", 1) << std::endl;     // 0
-	std::cout << str.find_last_of("leech", 2) << std::endl;    // 1
-	std::cout << str.find_last_of("clamp", 3) << std::endl;    // 2
-	std::cout << str.find_last_of('o') << std::endl;           // 3
-	std::cout << str.find_last_of('o', 2) << std::endl;        // -1
+	std::cout << str.find_last_of("world") << std::endl;     // 3
+	std::cout << str.find_last_of("plane") << std::endl;     // 4
+	std::cout << str.find_last_of("else") << std::endl;      // 1
+	std::cout << str.find_last_of("ray") << std::endl;       // -1
+	std::cout << str.find_last_of("mall", 1) << std::endl;   // 0
+	std::cout << str.find_last_of("leech", 2) << std::endl;  // 1
+	std::cout << str.find_last_of("clamp", 3) << std::endl;  // 2
+	std::cout << str.find_last_of('o') << std::endl;         // 3
+	std::cout << str.find_last_of('o', 2) << std::endl;      // -1
 
 	try {
 		std::cout << str.find_last_of("frog", 6)  // Caught exception
@@ -88,8 +88,7 @@ void test_code()
 	onestring emojis = "🌝⛄👽🐲🪗";
 
 	// emoji test
-	std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗")
-			  << std::endl;                                                // 4
+	std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗") << std::endl;  // 4
 	std::cout << emojis.find_last_of("🥁🐝📡") << std::endl;        // -1
 	std::cout << emojis.find_last_of("⛄🪗🌝", 3) << std::endl;      // 1
 	std::cout << emojis.find_last_of("⛄🐲🪗📡", 1) << std::endl;  // 1
