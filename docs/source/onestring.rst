@@ -473,3 +473,108 @@ The two ``onestrings`` must be of the same size.
 
     std::cout << first << std::endl; // "secondary".
     std::cout << second << std::endl;// "primary".
+
+Finding Onestrings
+------------------------------------------
+
+``find()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``find()`` search in onestring for the first ocurrence specify by its arguments that match with onestring.
+It returns the following integers:
+
+1. If it finds a match, it returns the position of the sequence in onestring.
+2. If it does not find any match it returns -1.
+
+.. code-block:: c++
+
+    // Declare one Onestring.
+    onestring sport = "karate";
+
+    // Search for a match
+    std::cout << sport.find("racketball") << std::endl; // Returns 2
+    std::cout << sport.find("golf") << std::endl; // Returns -1
+
+``find_first_of()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``find_first_of()`` search in onestring for the first character that match any character specify by its arguments.
+It returns the following integers:
+
+1. If it finds a match, it returns the position of the character in onestring.
+2. If it does not find any match it returns -1.
+
+.. code-block:: c++
+
+    // Declare one Onestring.
+    onestring flower = "daisy";
+
+    // Search for a match
+    std::cout << flower.find_first_of("iris") << std::endl; // Returns 2
+    std::cout << flower.find_first_of("bluebell") << std::endl; // Returns -1
+
+``find_last_of()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``find_last_of()`` search in onestring for the last character that match any character specified by its arguments.
+It returns the following integers:
+
+1. If it finds a match, it returns the position of the character in onestring.
+2. If it does not find any match it returns -1.
+
+.. code-block:: c++
+
+    // Declare one Onestring
+    onestring vehicle = "plane";
+
+    // Search for a match
+    std::cout << vehicle.find_last_of("van") << std::endl; // Returns 3
+    std::cout << vehicle.find_last_of("bus") << std::endl; // Returns 1
+
+``find_first_not_of``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``find_first_not_of`` search in onestring for the first character that does not match with any characters specify by its arguments.
+It returns the following integers:
+
+1. If it finds a match, it returns the position of the character in onestring.
+2. If it does not find any match it returns -1.
+
+.. code-block:: c++
+
+    // Declare one Onestring
+    onestring name = "Jane";
+
+    // Search for a match
+    std::cout << name.find_first_not_of("Kevin") << std::endl; // Returns 0
+    std::cout << name.find_first_not_of("Bill") << std::endl; // Returns -1
+
+``find_last_not_of()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``find_last_not_of()`` search in onestring for the last character that does not match with any characters specify by its arguments.
+It returns the following integers:
+
+1. If it finds a match, it returns the position of the character in onestring.
+2. If it does not find any match it returns -1.
+
+.. code-block:: c++
+
+    // Declare one Onestring
+    onestring city = "Bilbao";
+
+    // Search for a match
+    std::cout << city.find_last_not_of("Madrid") << std::endl; // Returns 5
+    std::cout << city.find_last_not_of("") << std::endl; // Returns -1
+
+``rfind()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``rfind()`` search in onestring for the last ocurrence that match with the sequence specified by its arguments
+It returns the following integers:
+
+1. If it finds a match, it returns the position of the sequence in onestring.
+2. If it does not find any match it returns -1.
+
+.. code-block:: c++
+
+    // Declare one Onestring
+    onestring color = "orange";
+
+    // Search for a match
+    std::cout << color.rfind("Bangor") << std::endl; // Returns 3
+    std::cout << color.rfind("plum") << std::endl; // Returns -1
