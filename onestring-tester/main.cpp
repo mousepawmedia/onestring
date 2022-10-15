@@ -60,43 +60,45 @@ void test_code()
 	// str test
 
 	// Test find()
-    onestring sport = "football";
+	onestring sport = "football";
 
-    std::cout << sport.find("ba") << std::endl; 					// Returns 4
-    std::cout << sport.find("te") << std::endl;  					// Returns -1
+	std::cout << sport.find("ba") << std::endl;  // Returns 4
+	std::cout << sport.find("te") << std::endl;  // Returns -1
 
 	// Test find_first_of()
-    onestring flower = "daisy";
+	onestring flower = "daisy";
 
-    std::cout << flower.find_first_of("iris") << std::endl; 		// Returns 2
-    std::cout << flower.find_first_of("bluebell") << std::endl; 	// Returns -1
+	std::cout << flower.find_first_of("iris") << std::endl;      // Returns 2
+	std::cout << flower.find_first_of("bluebell") << std::endl;  // Returns -1
 
 	// Test find_last_of()
-    onestring vehicle = "plane";
+	onestring vehicle = "plane";
 
-    std::cout << vehicle.find_last_of("van") << std::endl; 			// Returns 3
-    std::cout << vehicle.find_last_of("bus") << std::endl; 			// Returns -1
+	std::cout << vehicle.find_last_of("van") << std::endl;  // Returns 3
+	std::cout << vehicle.find_last_of("bus") << std::endl;  // Returns -1
 
 	// Test find_first_not_of()
-    onestring name = "Jane";
+	onestring name = "Jane";
 
-    std::cout << name.find_first_not_of("Kevin") << std::endl; 		// Returns 0
-    std::cout << name.find_first_not_of("Jena") << std::endl; 		// Returns -1
+	std::cout << name.find_first_not_of("Kevin") << std::endl;  // Returns 0
+	std::cout << name.find_first_not_of("Jena") << std::endl;   // Returns -1
 
 	// Test find_last_not_of()
-    onestring city = "Bilbao";
+	onestring city = "Bilbao";
 
-    std::cout << city.find_last_not_of("Madrid") << std::endl; 		// Returns 5
-    std::cout << city.find_last_not_of("Bolbia") << std::endl; 		// Returns -1
+	std::cout << city.find_last_not_of("Madrid") << std::endl;  // Returns 5
+	std::cout << city.find_last_not_of("Bolbia") << std::endl;  // Returns -1
 
-	 // Test rfind()
-    onestring color = "yellow";
+	// Test rfind()
+	onestring color = "yellow";
 	onestring letters = "bcsslbc";
 
-	std::cout << color.rfind("l") << std::endl; 					// Returns 2 when it should returns 3
-    std::cout << letters.rfind("bc") << std::endl; 					// Returns 0 when it should returns 5
-    std::cout << color.rfind("po") << std::endl; 					// Returns -1
-	std::cout << letters.rfind("am") << std::endl; 					// Returns -1
+	std::cout << color.rfind("l")
+			  << std::endl;  // Returns 2 when it should returns 3
+	std::cout << letters.rfind("bc")
+			  << std::endl;  // Returns 0 when it should returns 5
+	std::cout << color.rfind("po") << std::endl;    // Returns -1
+	std::cout << letters.rfind("am") << std::endl;  // Returns -1
 
 	// onestring str = "lemon";
 
@@ -127,11 +129,14 @@ void test_code()
 	// onestring emojis = "🌝⛄👽🐲🪗";
 
 	// // emoji test
-	// std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗") << std::endl;  // 4
-	// std::cout << emojis.find_last_of("🥁🐝📡") << std::endl;        // -1
-	// std::cout << emojis.find_last_of("⛄🪗🌝", 3) << std::endl;      // 1
-	// std::cout << emojis.find_last_of("⛄🐲🪗📡", 1) << std::endl;  // 1
-	// std::cout << emojis.find_last_of("🍀🐝👽") << std::endl;                 // 2
+	// std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗") << std::endl;  //
+	// 4
+	// std::cout << emojis.find_last_of("🥁🐝📡") << std::endl;        //
+	// -1
+	// std::cout << emojis.find_last_of("⛄🪗🌝", 3) << std::endl;      //
+	// 1
+	// std::cout << emojis.find_last_of("⛄🐲🪗📡", 1) << std::endl;  //
+	// 1 std::cout << emojis.find_last_of("🍀🐝👽") << std::endl; // 2
 
 	// try {
 	// 	std::cout << emojis.find_last_of("⛄🐲", 6)
