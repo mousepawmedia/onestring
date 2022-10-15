@@ -479,7 +479,7 @@ Finding Onestrings
 
 ``find()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``find()`` search in onestring for the first ocurrence specify by its arguments that match with onestring.
+``find()`` search in onestring for the first ocurrence specified by its arguments that match with onestring.
 It returns the following integers:
 
 1. If it finds a match, it returns the position of the sequence in onestring.
@@ -488,15 +488,15 @@ It returns the following integers:
 .. code-block:: c++
 
     // Declare one Onestring.
-    onestring sport = "karate";
+    onestring sport = "football";
 
     // Search for a match
-    std::cout << sport.find("racketball") << std::endl; // Returns 2
-    std::cout << sport.find("golf") << std::endl; // Returns -1
+    std::cout << sport.find("ba") << std::endl; // Returns 4
+    std::cout << sport.find("te") << std::endl; // Returns -1
 
 ``find_first_of()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``find_first_of()`` search in onestring for the first character that match any character specify by its arguments.
+``find_first_of()`` search in onestring for the first character that match any character specified by its arguments.
 It returns the following integers:
 
 1. If it finds a match, it returns the position of the character in onestring.
@@ -526,11 +526,11 @@ It returns the following integers:
 
     // Search for a match
     std::cout << vehicle.find_last_of("van") << std::endl; // Returns 3
-    std::cout << vehicle.find_last_of("bus") << std::endl; // Returns 1
+    std::cout << vehicle.find_last_of("bus") << std::endl; // Returns -1
 
 ``find_first_not_of``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``find_first_not_of`` search in onestring for the first character that does not match with any characters specify by its arguments.
+``find_first_not_of`` search in onestring for the first character that does not match with any characters specified by its arguments.
 It returns the following integers:
 
 1. If it finds a match, it returns the position of the character in onestring.
@@ -543,11 +543,12 @@ It returns the following integers:
 
     // Search for a match
     std::cout << name.find_first_not_of("Kevin") << std::endl; // Returns 0
-    std::cout << name.find_first_not_of("Bill") << std::endl; // Returns -1
+    std::cout << name.find_first_not_of("Jena") << std::endl; // Returns -1
 
 ``find_last_not_of()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``find_last_not_of()`` search in onestring for the last character that does not match with any characters specify by its arguments.
+``find_last_not_of()`` search in onestring for the last character that does not match with any characters specified
+ by its arguments.
 It returns the following integers:
 
 1. If it finds a match, it returns the position of the character in onestring.
@@ -560,7 +561,7 @@ It returns the following integers:
 
     // Search for a match
     std::cout << city.find_last_not_of("Madrid") << std::endl; // Returns 5
-    std::cout << city.find_last_not_of("") << std::endl; // Returns -1
+    std::cout << city.find_last_not_of("Bolbia") << std::endl; // Returns -1
 
 ``rfind()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -573,8 +574,8 @@ It returns the following integers:
 .. code-block:: c++
 
     // Declare one Onestring
-    onestring color = "orange";
+    onestring color = "yellow";
 
     // Search for a match
-    std::cout << color.rfind("Bangor") << std::endl; // Returns 3
-    std::cout << color.rfind("plum") << std::endl; // Returns -1
+    std::cout << color.rfind("l") << std::endl; // Returns 5
+    std::cout << color.rfind("pm") << std::endl; // Returns -1
