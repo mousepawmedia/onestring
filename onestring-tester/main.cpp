@@ -129,7 +129,7 @@ void test_code()
 	// onestring emojis = "🌝⛄👽🐲🪗";
 
 	// // emoji test
-	// std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗") << std::endl;  //
+	// std::cout << emojis.find_last_of("🥁🐝🌝🍀🪗") << std::endl; //
 	// 4
 	// std::cout << emojis.find_last_of("🥁🐝📡") << std::endl;        //
 	// -1
