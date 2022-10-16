@@ -577,5 +577,5 @@ It returns the following integers:
     onestring color = "yellow";
 
     // Search for a match
-    std::cout << color.rfind("l") << std::endl; // Returns 5
+    std::cout << color.rfind("l") << std::endl; // Returns 3
     std::cout << color.rfind("pm") << std::endl; // Returns -1
