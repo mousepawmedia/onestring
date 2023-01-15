@@ -69,7 +69,8 @@ void test_code()
 	// onestring flower = "daisy";
 
 	// std::cout << flower.find_first_of("iris") << std::endl;      // Returns 2
-	// std::cout << flower.find_first_of("bluebell") << std::endl;  // Returns -1
+	// std::cout << flower.find_first_of("bluebell") << std::endl;  // Returns
+	// -1
 
 	// // Test find_last_of()
 	// onestring vehicle = "plane";
@@ -93,59 +94,56 @@ void test_code()
 	onestring color = "yellow";
 	onestring letters = "bcsslbc";
 
-	std::cout << color.rfind("l") << std::endl;  	// Returns  3
-	std::cout << color.rfind("lc") << std::endl;  	// Returns  -1
-	std::cout << color.rfind("e") << std::endl;  	// Returns  1
-	std::cout << color.rfind("l", 2) << std::endl;   // Returns 2
-	std::cout << letters.rfind("bc") << std::endl;  // Returns  5
-	std::cout << letters.rfind("bb") << std::endl;  // Returns  -1
-	std::cout << letters.rfind("lb")  << std::endl;  // Returns 4
+	std::cout << color.rfind("l") << std::endl;        // Returns  3
+	std::cout << color.rfind("lc") << std::endl;       // Returns  -1
+	std::cout << color.rfind("e") << std::endl;        // Returns  1
+	std::cout << color.rfind("l", 2) << std::endl;     // Returns 2
+	std::cout << letters.rfind("bc") << std::endl;     // Returns  5
+	std::cout << letters.rfind("bb") << std::endl;     // Returns  -1
+	std::cout << letters.rfind("lb") << std::endl;     // Returns 4
 	std::cout << letters.rfind("bc", 3) << std::endl;  // Returns  0
-	std::cout << color.rfind("pa") << std::endl;    // Returns -1
-	std::cout << color.rfind("pl") << std::endl;    // Returns -1
-	std::cout << letters.rfind("em") << std::endl;  // Returns -1
-	std::cout << letters.rfind("es") << std::endl;  // Returns -1
-	std::cout << letters.rfind("ll") << std::endl;  // Returns -1
+	std::cout << color.rfind("pa") << std::endl;       // Returns -1
+	std::cout << color.rfind("pl") << std::endl;       // Returns -1
+	std::cout << letters.rfind("em") << std::endl;     // Returns -1
+	std::cout << letters.rfind("es") << std::endl;     // Returns -1
+	std::cout << letters.rfind("ll") << std::endl;     // Returns -1
 
 	try {
-	 	std::cout << color.rfind("ow", 7)  // Caught exception
-	 			  << std::endl;
-	 } catch (const std::out_of_range&) {
-	 	std::cout << "Caught exception" << std::endl;
-	 }
-
-	 try {
-	 	std::cout << letters.rfind("sl", 8)  // Caught exception
-	 			  << std::endl;
-	 } catch (const std::out_of_range&) {
-	 	std::cout << "Caught exception" << std::endl;
+		std::cout << color.rfind("ow", 7)  // Caught exception
+				  << std::endl;
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
 	}
 
-	 onestring emojis = "🌝⛄👽👽🐝🌝⛄";
+	try {
+		std::cout << letters.rfind("sl", 8)  // Caught exception
+				  << std::endl;
+	} catch (const std::out_of_range&) {
+		std::cout << "Caught exception" << std::endl;
+	}
+
+	onestring emojis = "🌝⛄👽👽🐝🌝⛄";
 
 	// emoji test
-	std::cout << emojis.rfind("🥁🐝🌝") << std::endl; 			//-1
-	std::cout << emojis.rfind("🐝") << std::endl;        		// 4
-	std::cout << emojis.rfind("👽") << std::endl;        		// 3
-	std::cout << emojis.rfind("🌝⛄", 3) << std::endl;      	   // 0
-	std::cout << emojis.rfind("🌝", 1) << std::endl;    		// 0
-	std::cout << emojis.rfind("👽👽") << std::endl;				// 2
+	std::cout << emojis.rfind("🥁🐝🌝") << std::endl;  //-1
+	std::cout << emojis.rfind("🐝") << std::endl;             // 4
+	std::cout << emojis.rfind("👽") << std::endl;             // 3
+	std::cout << emojis.rfind("🌝⛄", 3) << std::endl;         // 0
+	std::cout << emojis.rfind("🌝", 1) << std::endl;          // 0
+	std::cout << emojis.rfind("👽👽") << std::endl;            // 2
 
 	try {
-		std::cout << emojis.rfind("⛄👽", 7)
-				  << std::endl;  // Caught exception
+		std::cout << emojis.rfind("⛄👽", 7) << std::endl;  // Caught exception
 
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
 
 	try {
-		std::cout << emojis.rfind("🪗", 8)
-				  << std::endl;  // Caught exception
+		std::cout << emojis.rfind("🪗", 8) << std::endl;  // Caught exception
 	} catch (const std::out_of_range&) {
 		std::cout << "Caught exception" << std::endl;
 	}
-
 }
 
 /////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
