@@ -50,13 +50,14 @@
 
 #include <algorithm>
 #include <cctype>  // isspace()
+#include <climits>
 #include <cstring>
 #include <iomanip>
 #include <iostream>
 #include <istream>
 #include <locale>  // std::toupper, std::tolower, std::locale
 #include <string>
-#include <climits>
+
 #include "onestring/onechar.hpp"
 
 class onestring
@@ -1680,7 +1681,8 @@ public:
 		}
 
 		// checks onestring chars one by one from the end of the onestring
-		for (size_t i = (pos == 0 ? this->_elements - 1 : pos); i != UINT_MAX; --i) {
+		for (size_t i = (pos == 0 ? this->_elements - 1 : pos); i != UINT_MAX;
+			 --i) {
 			size_t j;
 			// checks if contains onechars from str, when no match it breaks the
 			// loop
