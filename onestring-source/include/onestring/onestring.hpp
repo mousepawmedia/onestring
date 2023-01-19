@@ -56,7 +56,7 @@
 #include <istream>
 #include <locale>  // std::toupper, std::tolower, std::locale
 #include <string>
-
+#include <climits>
 #include "onestring/onechar.hpp"
 
 class onestring
@@ -1680,29 +1680,27 @@ public:
 		}
 
 		// checks onestring chars one by one from the end of the onestring
-		for(size_t i = (pos == 0 ? this->_elements - 1: pos); i >= 0; --i ) {
-		size_t j;
-		// checks if contains onechars from str, when no match it breaks the loop
-			for( j = 0; j < str.length(); ++j){
-				if(this->internal[i+j] != str.internal[j]){
+		for (size_t i = (pos == 0 ? this->_elements - 1 : pos); i != UINT_MAX; --i) {
+			size_t j;
+			// checks if contains onechars from str, when no match it breaks the
+			// loop
+			for (j = 0; j < str.length(); ++j) {
+				if (this->internal[i + j] != str.internal[j]) {
 					break;
 				}
 			}
 			// return the last index of i when it finishes to check str
-			if(j == str._elements) {
+			if (j == str._elements) {
 				return i;
 			}
-			/* checks if i arrived at the first index of onestring,then breaks the loop
-			* to prevent negative index values stored in i */			
-			if(i == 0){
+			/* checks if i arrived at the first index of onestring,then breaks
+			 * the loop to prevent negative index values stored in i */
+			if (i == 0) {
 				break;
 			}
-
 		}
-		// returns -1 when no match	
+		// returns -1 when no match
 		return -1;
-	
-		
 	}
 
 	int find_first_of(const std::string& str, size_t pos = 0)
