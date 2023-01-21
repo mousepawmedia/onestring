@@ -1681,12 +1681,12 @@ public:
 		}
 
 		// checks onestring chars one by one from the end of the onestring,
-		// when the index goes below index 0 it breaks the loop 
+		// when the index goes below index 0 it breaks the loop
 		for (size_t i = (pos == 0 ? this->_elements - 1 : pos); i != UINT_MAX;
 			 --i) {
 			size_t j;
 			/* checks if contains onechars from str, when no match it breaks the
-			* loop*/
+			 * loop*/
 			for (j = 0; j < str.length(); ++j) {
 				if (this->internal[i + j] != str.internal[j]) {
 					break;
