@@ -50,6 +50,7 @@
 
 #include <algorithm>
 #include <cctype>  // isspace()
+#include <climits>
 #include <cstring>
 #include <iomanip>
 #include <iostream>
@@ -1676,29 +1677,31 @@ public:
 		// if pos is greater than the onestring length throws error
 		if (pos >= this->_elements) {
 			throw std::out_of_range(
-				"Onestring::find(): specified pos out of range");
+				"Onestring::rfind(): specified pos out of range");
 		}
 
-		size_t matches = 0;
-
-		// checks onestring chars one by one
-		for (size_t i = 0; i <= (pos == 0 ? this->_elements - 1 : pos); ++i) {
-			// checks if contains onechars from str, when no match it breaks the loop
-			for (size_t j = 0; j < str.length(); ++j) {
-				if (this->internal[i + j] == str.internal[j]) {
-					matches++;
-				} else {
+		// checks onestring chars one by one from the end of the onestring,
+		// when the index goes below index 0 it breaks the loop
+		for (size_t i = (pos == 0 ? this->_elements - 1 : pos); i != UINT_MAX;
+			 --i) {
+			size_t j;
+			/* checks if contains onechars from str, when no match it breaks the
+			 * loop*/
+			for (j = 0; j < str.length(); ++j) {
+				if (this->internal[i + j] != str.internal[j]) {
 					break;
 				}
 			}
-
-			if (matches == str._elements) {
-				// returns position of the last character of the last
-				// match
-				return static_cast<int>(i);
+			// return the last index of i when it finishes to check str
+			if (j == str._elements) {
+				return i;
+			}
+			/* checks if i arrived at the first index of onestring,then breaks
+			 * the loop to prevent negative index values stored in i */
+			if (i == 0) {
+				break;
 			}
 		}
-
 		// returns -1 when no match
 		return -1;
 	}
